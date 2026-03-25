@@ -1,0 +1,41 @@
+# =============================================================================
+# TabularGP Configuration
+# =============================================================================
+
+# Problem type: "regression" or "classification"
+problem: "classification"
+
+# OpenML dataset ID (https://www.openml.org/search?type=data)
+# Examples:
+#   - 31:   credit-g (classification, 1000 rows, 20 features)
+#   - 1461: bank-marketing (classification, 45211 rows, 16 features)
+#   - 1590: adult (classification, 48842 rows, 14 features)
+#   - 41021: boston housing (regression, 506 rows, 13 features) -- deprecated, use 43404
+#   - 43404: california housing (regression, 20640 rows, 8 features)
+#   - 41187: wine-quality (regression, 6497 rows, 12 features)
+dataset_id: 1590
+
+# Target column name (set null to use OpenML's default target)
+target: null
+
+# Number of training points for GP (controls O(n³) complexity)
+nb_training_points: 500
+
+# Number of data samples to use (set null to use all)
+n_samples: 1000
+
+# Training
+epochs: 5
+lr: 1.0e-3
+
+# Kernel: "ProductOfSumsKernel", "WeightedSumKernel", "WeightedProductKernel", "NeuralKernel"
+kernel: "ProductOfSumsKernel"
+
+# Prior: "ConstantPrior", "ZeroPrior", "LinearPrior"
+prior: "ConstantPrior"
+
+# Noise (fraction of output std)
+noise: 0.01
+
+# Show feature importance plot after training
+plot_feature_importance: true
