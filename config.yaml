@@ -25,14 +25,26 @@ nb_training_points: 500
 n_samples: 1000
 
 # Training
-epochs: 5
+epochs: 20
 lr: 1.0e-3
 
 # Kernel: "ProductOfSumsKernel", "WeightedSumKernel", "WeightedProductKernel", "NeuralKernel"
 kernel: "ProductOfSumsKernel"
 
-# Prior: "ConstantPrior", "ZeroPrior", "LinearPrior"
-prior: "ConstantPrior"
+# Prior: "ConstantPrior", "ZeroPrior", "LinearPrior", "LLMPrior"
+prior: "LLMPrior"
+
+# LLM Prior settings (only used when prior is "LLMPrior")
+llm_prior:
+  lambda: 0.5                    # Trust weight for LLM outputs vs. data mean
+  dataset_description: ""        # Optional description of dataset for LLM prompts
+  models:
+    - model: "nvidia_nim/openai/gpt-oss-120b"
+      strategy: "statistical"
+    - model: "nvidia_nim/openai/gpt-oss-120b"
+      strategy: "domain_expert"
+    - model: "nvidia_nim/openai/gpt-oss-120b"
+      strategy: "pattern_matching"
 
 # Noise (fraction of output std)
 noise: 0.01

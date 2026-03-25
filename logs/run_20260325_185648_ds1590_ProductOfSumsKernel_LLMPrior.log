@@ -1,0 +1,81 @@
+2026-03-25 18:56:48,896 | INFO | ============================================================
+2026-03-25 18:56:48,896 | INFO | TabularGP | Problem: classification | Kernel: ProductOfSumsKernel | Prior: LLMPrior
+2026-03-25 18:56:48,896 | INFO | Config: epochs=5, lr=0.001, noise=0.01, nb_training_points=500
+2026-03-25 18:56:48,898 | INFO | Dataset ID: 1590 | n_samples: 1000
+2026-03-25 18:56:48,898 | INFO | Log file: logs\run_20260325_185648_ds1590_ProductOfSumsKernel_LLMPrior.log
+2026-03-25 18:56:48,898 | INFO | ============================================================
+2026-03-25 18:56:49,035 | INFO | Categorical features (9): ['workclass', 'education', 'education-num', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'native-country']
+2026-03-25 18:56:49,037 | INFO | Continuous features  (5): ['age', 'fnlwgt', 'capital-gain', 'capital-loss', 'hours-per-week']
+2026-03-25 18:56:49,037 | INFO | Dataset shape: (1000, 15)
+2026-03-25 18:56:51,810 | INFO | Pre-computing LLM predictions for 500 samples...
+2026-03-25 18:56:51,821 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:56:54,102 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:56:54,114 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.0 (raw: 'The sample shows a very high education level (education‑num\u202f=\u202f16) but low normalized values for age, hours‑per‑week, capital‑gain and capital‑loss, indicating a younger individual working relatively few hours with little extra earnings. In the classic Adult income data, such a profile is more strongly associated with the “≤\u202f50K” class than with “>\u202f50K”. Therefore the most probable class is the lower‑income category.\n\nPREDICTION: 0')
+2026-03-25 18:56:54,115 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:56:56,318 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:56:56,319 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.0 (raw: 'PREDICTION: 0')
+2026-03-25 18:56:56,320 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:57:00,425 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:57:00,426 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.0 (raw: 'The encoded categorical values suggest a U.S. resident with a high level of education (education‑num\u202f=\u202f16, likely a doctorate) and a typical “white male” profile (race\u202f=\u202f5, sex\u202f=\u202f2, native‑country\u202f=\u202f28).  \nHowever, the standardized continuous features are all below their respective means: age (‑0.64\u202fσ), work‑related weight (fnlwgt\u202f‑0.20\u202fσ), capital‑gain/loss (both negative), and especially hours‑per‑week (‑0.91\u202fσ), indicating a relatively young individual who works fewer hours and has little or no extra capital income. In the Adult income data, such a combination of high education but low work hours and low capital gains is more typical of the lower‑income class (≤\u202f50\u202fK).  \n\n**Prediction:** the sample belongs to the lower‑income class.  \n\nPREDICTION: 0')
+2026-03-25 18:57:00,426 | INFO |   [1/500] LLM avg=0.0000
+2026-03-25 18:57:00,428 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:57:01,669 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:57:01,670 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.0 (raw: 'PREDICTION: 0')
+2026-03-25 18:57:01,671 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:57:02,974 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:57:02,975 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.0 (raw: 'The sample shows a relatively low education level, negative hours‑per‑week and low capital‑gain, a relatively high capital‑loss, and demographic indicators (female, moderate age) that in the Adult dataset are associated with lower probability of earning >50\u202fK. Hence the most probable class is the lower‑income class.\n\nPREDICTION: 0')
+2026-03-25 18:57:02,976 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:57:04,568 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:57:04,570 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.0 (raw: 'The feature values suggest a profile with modest age, negative or low normalized values for fnlwgt, capital‑gain, and hours‑per‑week, and an unusually high capital‑loss. In the typical Adult income context, a high capital‑loss and low capital‑gain are associated with lower earnings, while the negative hour‑per‑week score points to fewer work hours. These patterns collectively indicate a lower‑income class.\n\nPREDICTION: 0')
+2026-03-25 18:57:04,571 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:57:11,676 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:57:11,677 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 1.0 (raw: 'The numeric features show the individual is slightly older than average (age\u202f≈\u202f0.17\u202fsd above the mean), has a higher than average weighting (fnlwgt\u202f≈\u202f0.98\u202fsd), works many hours per week (hours‑per‑week\u202f≈\u202f2.58\u202fsd), and is male (sex\u202f=\u202f1). These traits—higher hours, higher fnlwgt, and male gender—are positively associated with the higher‑income class in the typical adult income data. Categorical codes such as a higher‑ranked occupation (11) and being married (marital‑status\u202f=\u202f2) also increase the likelihood of the >50K class. Overall, the combination of these indicators points toward the higher‑income class.\n\nPREDICTION: 1')
+2026-03-25 18:57:11,678 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:57:13,992 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:57:13,993 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 1.0 (raw: 'PREDICTION: 1')
+2026-03-25 18:57:13,993 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:57:18,079 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:57:18,080 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.0 (raw: 'The categorical codes suggest an individual with a mid‑range occupation (code\u202f11) and a relatively high work intensity (hours‑per‑week normalized to 2.58, indicating a long work week). However, the age factor is low (0.17), and both capital‑gain and capital‑loss are negative after scaling, implying little or no extra income from investments. The very high fnlwgt value (0.98) is typical of many population‑weighted records but does not strongly indicate high earnings. Overall, the combination of younger age, modest capital gains, and typical occupational coding points toward the lower‑income class in this type of dataset.\n\nPREDICTION: 0')
+2026-03-25 18:57:18,080 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:57:20,599 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:57:20,601 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.0 (raw: 'PREDICTION: 0')
+2026-03-25 18:57:20,604 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:57:24,461 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:57:24,462 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.0 (raw: 'The individual has relatively low education (education‑num\u202f=\u202f8), works very few hours per week (≈\u202f2\u202fSD below the mean), and has below‑average capital gains and losses. These factors together strongly suggest a lower‑income profile, which in the Adult income dataset corresponds to the “≤\u202f50K” class.  \n\nPREDICTION: 0')
+2026-03-25 18:57:24,462 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:57:26,030 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:57:26,033 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.0 (raw: 'The categorical indices (e.g., workclass\u202f=\u202f2, education\u202f=\u202f11, occupation\u202f=\u202f9) place this individual in groups that are not typically associated with the highest‑earning segments of the population (e.g., not the top education‑number, not a professional occupation code).  \n\nThe standardized numeric values further support a lower‑income profile:  \n* **age** is moderately above average (0.68\u202fσ), but  \n* **capital‑gain** (‑0.15\u202fσ) and **capital‑loss** (‑0.20\u202fσ) are both below their means, indicating little extra earnings from investments, and  \n* **hours‑per‑week** is far below the mean (‑2.22\u202fσ), suggesting part‑time or limited work hours.  \n\nTogether, these patterns align with the class that represents the lower income bracket in the typical adult income dataset.  \n\nPREDICTION: 0')
+2026-03-25 18:57:26,037 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:57:29,088 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:57:29,088 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 1.0 (raw: 'The feature values suggest an older, likely male individual with higher education and a professional occupation (e.g., executive/manager) who is married, white, and native to the United States. In the typical Adult income dataset, such a profile is strongly associated with earning more than 50\u202fK, which is usually the positive class. Therefore the most probable class label is the positive one.\n\nPREDICTION: 1')
+2026-03-25 18:57:29,090 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:57:30,485 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:57:30,486 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 1.0 (raw: "The individual's high encoded education level and above‑average age suggest a higher likelihood of earning >\u202f$50K, while the modest hours‑per‑week and low capital gains do not strongly counter that. Overall, the profile leans toward the higher‑income class.\n\nPREDICTION: 1")
+2026-03-25 18:57:30,487 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:57:38,099 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:57:38,101 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 1.0 (raw: 'The categorical codes suggest a relatively privileged demographic: a workclass coded as\u202f1 (often “Private”), a high education level (code\u202f16), married status (code\u202f6), professional occupation (code\u202f3), and male sex (code\u202f1).  \nThe continuous attributes reinforce this picture: the age z‑score is +1.57 (well above the mean age), while capital‑gain and capital‑loss are only slightly below average and hours‑per‑week is near the mean, indicating a typical full‑time worker.  \nThese combined signals are typical of the group that, in the classic Adult income dataset, falls into the higher‑income (>\u202f50K) class. Hence the most likely class label is the positive class.\n\nPREDICTION: 1')
+2026-03-25 18:57:38,102 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:57:42,045 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:57:42,047 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.0 (raw: 'The features resemble those of the UCI Adult income dataset, where the target is whether a person makes >\u202f50\u202fK (often coded as 1) or ≤\u202f50\u202fK (coded as 0).  \n\n- **Education** is high (value 16, likely a graduate degree) which pushes probability toward the high‑income class.  \n- **Workclass = 3** and **occupation = 1** are typical of private‑sector, lower‑skill jobs, which tend toward the lower‑income class.  \n- **Sex = 2** (female) and **hours‑per‑week** slightly below average reduce the income likelihood.  \n- **Age** is well below the mean (standardized –0.86), suggesting a younger individual, also associated with lower earnings.  \n- **Capital‑gain/loss** are both below the mean, giving little extra income boost.  \n- **Fnlwgt** is above average, but this weight does not directly affect the income outcome.  \n\nOverall, the negative signals (young age, female, lower hours, low capital gains) outweigh the positive education signal, making the most likely class the lower‑income category.\n\nPREDICTION: 0')
+2026-03-25 18:57:42,048 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:57:46,145 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:57:46,146 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.0 (raw: 'PREDICTION: 0')
+2026-03-25 18:57:46,147 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim

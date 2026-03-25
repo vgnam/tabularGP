@@ -1,0 +1,165 @@
+2026-03-25 18:52:12,874 | INFO | ============================================================
+2026-03-25 18:52:12,875 | INFO | TabularGP | Problem: classification | Kernel: ProductOfSumsKernel | Prior: LLMPrior
+2026-03-25 18:52:12,875 | INFO | Config: epochs=5, lr=0.001, noise=0.01, nb_training_points=500
+2026-03-25 18:52:12,875 | INFO | Dataset ID: 1590 | n_samples: 1000
+2026-03-25 18:52:12,876 | INFO | Log file: logs\run_20260325_185212_ds1590_ProductOfSumsKernel_LLMPrior.log
+2026-03-25 18:52:12,876 | INFO | ============================================================
+2026-03-25 18:52:13,224 | INFO | Categorical features (9): ['workclass', 'education', 'education-num', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'native-country']
+2026-03-25 18:52:13,225 | INFO | Continuous features  (5): ['age', 'fnlwgt', 'capital-gain', 'capital-loss', 'hours-per-week']
+2026-03-25 18:52:13,225 | INFO | Dataset shape: (1000, 15)
+2026-03-25 18:52:21,065 | INFO | Pre-computing LLM predictions for 500 samples...
+2026-03-25 18:52:21,117 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:22,685 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:22,715 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:22,717 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:23,135 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:23,137 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:23,140 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:23,658 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:23,661 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:23,662 | INFO |   [1/500] LLM avg=0.0000
+2026-03-25 18:52:23,663 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:24,160 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:24,162 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:24,164 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:24,652 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:24,655 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:24,656 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:25,136 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:25,137 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:25,140 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:25,622 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:25,623 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:25,623 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:26,025 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:26,025 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:26,027 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:26,602 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:26,604 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:26,605 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:27,081 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:27,083 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:27,085 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:27,574 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:27,576 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:27,578 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:28,098 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:28,100 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:28,102 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:28,524 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:28,526 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:28,528 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:28,957 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:28,958 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:28,960 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:29,496 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:29,499 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:29,501 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:29,961 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:29,963 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:29,965 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:30,340 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:30,342 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:30,344 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:30,877 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:30,879 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:30,881 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:31,266 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:31,268 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:31,270 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:31,831 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:31,832 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:31,834 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:32,260 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:32,261 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:32,263 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:33,156 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:33,157 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:33,160 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:33,684 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:33,685 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:33,686 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:34,080 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:34,081 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:34,084 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:34,625 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:34,628 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:34,630 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:35,140 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:35,142 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:35,143 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:35,537 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:35,549 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:35,551 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:35,981 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:35,985 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:35,988 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:36,461 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:36,465 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:36,467 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:36,889 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:36,893 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:36,895 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:37,386 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:37,397 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:37,410 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:37,975 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:37,977 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:37,979 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:38,408 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:38,411 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:38,413 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:38,853 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:38,855 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:38,856 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:39,236 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:39,237 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:39,240 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:39,807 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:39,809 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:39,811 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:40,358 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:40,360 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:40,363 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:52:40,887 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 18:52:40,889 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: 'NoneType' object has no attribute 'strip'. Using fallback=0.0
+2026-03-25 18:52:40,892 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim

@@ -1,0 +1,74 @@
+2026-03-25 19:05:00,603 | INFO | ============================================================
+2026-03-25 19:05:00,604 | INFO | TabularGP | Problem: classification | Kernel: ProductOfSumsKernel | Prior: LLMPrior
+2026-03-25 19:05:00,604 | INFO | Config: epochs=5, lr=0.001, noise=0.01, nb_training_points=500
+2026-03-25 19:05:00,604 | INFO | Dataset ID: 1590 | n_samples: 1000
+2026-03-25 19:05:00,604 | INFO | Log file: logs\run_20260325_190500_ds1590_ProductOfSumsKernel_LLMPrior.log
+2026-03-25 19:05:00,606 | INFO | ============================================================
+2026-03-25 19:05:00,752 | INFO | Categorical features (9): ['workclass', 'education', 'education-num', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'native-country']
+2026-03-25 19:05:00,752 | INFO | Continuous features  (5): ['age', 'fnlwgt', 'capital-gain', 'capital-loss', 'hours-per-week']
+2026-03-25 19:05:00,752 | INFO | Dataset shape: (1000, 15)
+2026-03-25 19:05:03,248 | INFO | Querying LLMs with dataset summary...
+2026-03-25 19:05:03,262 | INFO | Querying 3 LLMs with dataset summary (1000 samples)...
+2026-03-25 19:05:03,273 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 19:05:05,972 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 19:05:05,984 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.231 (raw: 'The only information we have about the target distribution is the overall class counts: 769 instances of “≤\u202f50K” and 231 instances of “>\u202f50K” out of 1\u202f000 samples. With no additional features used for a more refined estimate, the best unbiased predictor of the expected value of the target (treating “≤\u202f50K” as 0 and “>\u202f50K” as 1) is simply the empirical proportion of the positive class. Therefore the expected value ≈\u202f231\u202f/\u202f1000\u202f=\u202f0.231 (i.e., a 23.1\u202f% chance of belonging to the “>\u202f50K” class).\n\nPREDICTION: 0.231')
+2026-03-25 19:05:05,985 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 19:05:07,661 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 19:05:07,662 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.231 (raw: "The dataset resembles the classic UCI Adult income data, where the target indicates whether an individual's annual income is over or under $50\u202fK. The class distribution shows 769 examples (≈77\u202f%) in the “<=50K” class and 231 examples (≈23\u202f%) in the “>50K” class. Since no additional weighting or cost information is given, the overall expected value of the target (treating “<=50K” as 0 and “>50K” as 1) is simply the proportion of the positive class.\n\n**PREDICTION: 0.231**")
+2026-03-25 19:05:07,662 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 19:05:10,415 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 19:05:10,419 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.231 (raw: 'The data show a strong class imbalance: about 77\u202f% of the rows belong to the “<=\u202f50K” income class and only 23\u202f% to “>\u202f50K”. This imbalance is reinforced by several demographic patterns:\n\n* **Gender & Work** – Males (66\u202f%) dominate, and the most frequent workclass is Private. High‑earning (>\u202f50K) cases are more common among males, especially in executive‑managerial, professional, and self‑employment occupations.\n* **Education** – Higher education levels (Bachelors, Masters, Prof‑specialty) appear disproportionately in the >\u202f50K group, while the majority of HS‑grad and Some‑college workers fall into <=\u202f50K.\n* **Age & Hours** – The mean age is ~39\u202fyears; higher‑earning individuals tend to be older and work slightly longer hours (often >\u202f40\u202fh/week) compared with the overall average of 40\u202fh/week.\n* **Capital Gains** – The few records with large capital‑gain values (e.g., >\u202f10\u202f000) are almost always >\u202f50K, indicating that capital income is a strong predictor.\n* **Marital Status & Relationship** – Married‑civ‑spouse and Husband relationships are over‑represented in the >\u202f50K class, while Never‑married and Not‑in‑family dominate the <=\u202f50K class.\n\nThese patterns suggest that, despite the minority status of the >\u202f50K class, the expected proportion of the positive class (encoded as 1) across the whole dataset is roughly 23\u202f%.\n\nPREDICTION: 0.231')
+2026-03-25 19:05:10,421 | INFO | LLM predictions: [0.231, 0.231, 0.231]
+2026-03-25 19:05:10,422 | INFO | LLM predictions: [0.231, 0.231, 0.231]
+2026-03-25 19:05:10,505 | INFO | LLMPrior initialized: λ_init=0.50, llm_avg=0.2310, mean=[0.7979999780654907, 0.20200000703334808]
+2026-03-25 19:05:10,505 | INFO | Training for 5 epochs with lr=0.001...
+2026-03-25 19:05:14,866 | INFO | 
+2026-03-25 19:05:14,866 | INFO | ============================================================
+2026-03-25 19:05:14,866 | INFO | Training Log (per epoch)
+2026-03-25 19:05:14,866 | INFO | ============================================================
+2026-03-25 19:05:14,867 | INFO | Epoch    Train Loss      Valid Loss      accuracy       
+2026-03-25 19:05:14,867 | INFO | -----------------------------------------------------
+2026-03-25 19:05:14,867 | INFO | 0        75.647415       68.093422       0.810000       
+2026-03-25 19:05:14,867 | INFO | 1        110.930656      112.173363      0.795000       
+2026-03-25 19:05:14,867 | INFO | 2        120.764885      116.471756      0.800000       
+2026-03-25 19:05:14,867 | INFO | 3        194.290726      337.122040      0.735000       
+2026-03-25 19:05:14,868 | INFO | 4        216.038544      226.138962      0.760000       
+2026-03-25 19:05:14,868 | INFO | 
+LLMPrior final λ (learned): 0.5010
+2026-03-25 19:05:14,868 | INFO | 
+2026-03-25 19:05:14,868 | INFO | ----------------------------------------
+2026-03-25 19:05:14,868 | INFO | Sample predictions (first 5 validation rows):
+2026-03-25 19:05:14,869 | INFO | ----------------------------------------
+2026-03-25 19:05:14,923 | INFO |   [1] Predicted: class 0 | Actual: >50K
+2026-03-25 19:05:14,923 | INFO |   [2] Predicted: class 0 | Actual: <=50K
+2026-03-25 19:05:14,923 | INFO |   [3] Predicted: class 0 | Actual: <=50K
+2026-03-25 19:05:14,924 | INFO |   [4] Predicted: class 1 | Actual: >50K
+2026-03-25 19:05:14,924 | INFO |   [5] Predicted: class 0 | Actual: >50K
+2026-03-25 19:05:14,924 | INFO | 
+2026-03-25 19:05:14,924 | INFO | ----------------------------------------
+2026-03-25 19:05:14,924 | INFO | Feature Importance:
+2026-03-25 19:05:14,925 | INFO | ----------------------------------------
+2026-03-25 19:05:14,931 | INFO | 
+      Variable  Importance
+           age    0.019420
+hours-per-week    0.017112
+     workclass    0.015453
+          race    0.014034
+  capital-gain    0.013867
+native-country    0.013126
+  capital-loss    0.012483
+           sex    0.010432
+ education-num    0.009992
+        fnlwgt    0.009361
+marital-status    0.007917
+    occupation    0.007771
+     education    0.007399
+  relationship    0.007356
+2026-03-25 19:05:15,787 | INFO | Plot saved to feature_importance.png
+2026-03-25 19:05:15,789 | INFO | 
+2026-03-25 19:05:15,789 | INFO | ============================================================
+2026-03-25 19:05:15,789 | INFO | Done! Log saved to: logs\run_20260325_190500_ds1590_ProductOfSumsKernel_LLMPrior.log
+2026-03-25 19:05:15,790 | INFO | ============================================================

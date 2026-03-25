@@ -1,0 +1,89 @@
+2026-03-25 19:07:45,363 | INFO | ============================================================
+2026-03-25 19:07:45,364 | INFO | TabularGP | Problem: classification | Kernel: ProductOfSumsKernel | Prior: LLMPrior
+2026-03-25 19:07:45,364 | INFO | Config: epochs=20, lr=0.001, noise=0.01, nb_training_points=500
+2026-03-25 19:07:45,364 | INFO | Dataset ID: 1590 | n_samples: 1000
+2026-03-25 19:07:45,364 | INFO | Log file: logs\run_20260325_190745_ds1590_ProductOfSumsKernel_LLMPrior.log
+2026-03-25 19:07:45,364 | INFO | ============================================================
+2026-03-25 19:07:45,500 | INFO | Categorical features (9): ['workclass', 'education', 'education-num', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'native-country']
+2026-03-25 19:07:45,502 | INFO | Continuous features  (5): ['age', 'fnlwgt', 'capital-gain', 'capital-loss', 'hours-per-week']
+2026-03-25 19:07:45,502 | INFO | Dataset shape: (1000, 15)
+2026-03-25 19:07:48,001 | INFO | Querying LLMs with dataset summary...
+2026-03-25 19:07:48,015 | INFO | Querying 3 LLMs with dataset summary (1000 samples)...
+2026-03-25 19:07:48,028 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 19:07:50,773 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 19:07:50,787 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.231 (raw: 'The class distribution shows that 769 out of 1\u202f000 instances belong to “<=50K” and 231 belong to “>50K”. If we encode the target as 0 for “<=50K” and 1 for “>50K”, the expected value (i.e., the mean of the encoded variable) is simply the proportion of the positive class:\n\n\\[\nE[Y]=\\frac{231}{1000}=0.231\n\\]\n\nThus, based purely on the observed frequencies, the overall expected value of the target variable is 0.231.\n\nPREDICTION: 0.231')
+2026-03-25 19:07:50,790 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 19:07:52,865 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 19:07:52,866 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.231 (raw: 'The class distribution shows 231 out of 1000 instances belong to the “>50K” income bracket. If we encode “<=50K” as\u202f0 and “>50K” as\u202f1, the expected value of the target equals the proportion of the positive class, i.e., 231\u202f/\u202f1000\u202f≈\u202f0.231.\n\nPREDICTION: 0.231')
+2026-03-25 19:07:52,867 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 19:07:55,897 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 19:07:55,897 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.231 (raw: 'The data show classic income‑prediction patterns:\n\n* **Education & education‑num** – Higher education levels (Bachelors, Masters, Prof‑specialty occupations) appear more often among the >50K rows.\n* **Capital‑gain** – The only >50K example in the snippet has a large capital‑gain (14\u202f344); most >50K cases tend to have non‑zero capital‑gain, while the majority of <=50K cases have 0.\n* **Occupation** – Executive‑managerial, Prof‑specialty, and Sales occupations have higher >50K frequencies; service‑type occupations dominate the <=50K group.\n* **Workclass** – Private sector dominates both classes, but self‑emp‑inc and self‑emp‑not‑inc have a higher proportion of >50K relative to their counts.\n* **Hours‑per‑week** – Slightly higher average weekly hours are associated with >50K.\n* **Sex & race** – Males and White individuals constitute a larger share of the >50K class, reflecting the overall distribution.\n\nAggregating across the whole sample, 231 out of 1\u202f000 instances belong to the “>50K” class, giving an overall expected probability (or mean) for the positive class of 0.231.\n\n**Prediction:**  \nPREDICTION: 0.231')
+2026-03-25 19:07:55,899 | INFO | LLM predictions: [0.231, 0.231, 0.231]
+2026-03-25 19:07:55,899 | INFO | LLM predictions: [0.231, 0.231, 0.231]
+2026-03-25 19:07:55,986 | INFO | LLMPrior initialized: λ_init=0.50, llm_avg=0.2310, mean=[0.7979999780654907, 0.20200000703334808]
+2026-03-25 19:07:55,988 | INFO | Training for 20 epochs with lr=0.001...
+2026-03-25 19:08:11,996 | INFO | 
+2026-03-25 19:08:11,996 | INFO | ============================================================
+2026-03-25 19:08:11,997 | INFO | Training Log (per epoch)
+2026-03-25 19:08:11,997 | INFO | ============================================================
+2026-03-25 19:08:11,997 | INFO | Epoch    Train Loss      Valid Loss      accuracy       
+2026-03-25 19:08:11,997 | INFO | -----------------------------------------------------
+2026-03-25 19:08:11,997 | INFO | 0        78.737076       71.075539       0.815000       
+2026-03-25 19:08:11,998 | INFO | 1        76.988457       69.579704       0.810000       
+2026-03-25 19:08:11,998 | INFO | 2        107.213882      125.094086      0.795000       
+2026-03-25 19:08:11,998 | INFO | 3        115.881248      113.864456      0.795000       
+2026-03-25 19:08:11,998 | INFO | 4        123.125954      112.179291      0.805000       
+2026-03-25 19:08:11,998 | INFO | 5        190.499542      205.033157      0.735000       
+2026-03-25 19:08:11,998 | INFO | 6        239.135971      222.300018      0.760000       
+2026-03-25 19:08:11,998 | INFO | 7        250.190643      220.013748      0.765000       
+2026-03-25 19:08:11,998 | INFO | 8        252.953949      211.542770      0.770000       
+2026-03-25 19:08:11,999 | INFO | 9        259.968811      198.785431      0.770000       
+2026-03-25 19:08:11,999 | INFO | 10       247.797943      193.014008      0.790000       
+2026-03-25 19:08:11,999 | INFO | 11       245.792450      186.608765      0.790000       
+2026-03-25 19:08:11,999 | INFO | 12       240.241837      181.923141      0.785000       
+2026-03-25 19:08:11,999 | INFO | 13       231.287109      178.753372      0.785000       
+2026-03-25 19:08:12,000 | INFO | 14       217.504089      177.009201      0.785000       
+2026-03-25 19:08:12,000 | INFO | 15       229.372269      175.329041      0.785000       
+2026-03-25 19:08:12,000 | INFO | 16       230.513214      174.290375      0.785000       
+2026-03-25 19:08:12,000 | INFO | 17       223.435974      173.977310      0.785000       
+2026-03-25 19:08:12,000 | INFO | 18       218.967346      173.894470      0.785000       
+2026-03-25 19:08:12,000 | INFO | 19       205.717911      173.928314      0.785000       
+2026-03-25 19:08:12,002 | INFO | 
+LLMPrior final λ (learned): 0.4986
+2026-03-25 19:08:12,002 | INFO | 
+2026-03-25 19:08:12,002 | INFO | ----------------------------------------
+2026-03-25 19:08:12,002 | INFO | Sample predictions (first 5 validation rows):
+2026-03-25 19:08:12,002 | INFO | ----------------------------------------
+2026-03-25 19:08:12,050 | INFO |   [1] Predicted: class 1 | Actual: >50K
+2026-03-25 19:08:12,050 | INFO |   [2] Predicted: class 0 | Actual: <=50K
+2026-03-25 19:08:12,050 | INFO |   [3] Predicted: class 0 | Actual: <=50K
+2026-03-25 19:08:12,052 | INFO |   [4] Predicted: class 1 | Actual: >50K
+2026-03-25 19:08:12,052 | INFO |   [5] Predicted: class 0 | Actual: >50K
+2026-03-25 19:08:12,052 | INFO | 
+2026-03-25 19:08:12,053 | INFO | ----------------------------------------
+2026-03-25 19:08:12,053 | INFO | Feature Importance:
+2026-03-25 19:08:12,053 | INFO | ----------------------------------------
+2026-03-25 19:08:12,058 | INFO | 
+      Variable  Importance
+hours-per-week    0.002724
+           age    0.002695
+  capital-gain    0.002650
+     workclass    0.002526
+          race    0.002423
+  capital-loss    0.001917
+native-country    0.001672
+           sex    0.001637
+marital-status    0.001271
+  relationship    0.001149
+     education    0.001144
+ education-num    0.001091
+        fnlwgt    0.000929
+    occupation    0.000883
+2026-03-25 19:08:12,457 | INFO | Plot saved to feature_importance.png
+2026-03-25 19:08:12,457 | INFO | 
+2026-03-25 19:08:12,457 | INFO | ============================================================
+2026-03-25 19:08:12,458 | INFO | Done! Log saved to: logs\run_20260325_190745_ds1590_ProductOfSumsKernel_LLMPrior.log
+2026-03-25 19:08:12,458 | INFO | ============================================================

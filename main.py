@@ -6,13 +6,42 @@ Loads dataset from OpenML, runs regression or classification based on config.yam
 import yaml
 import numpy as np
 import pandas as pd
+import json
+import logging
+from datetime import datetime
+from pathlib import Path
 from sklearn.datasets import fetch_openml
 from fastai.tabular.all import *
 from tabularGP import tabularGP_learner
 from tabularGP.kernel import ProductOfSumsKernel, WeightedSumKernel, WeightedProductKernel, NeuralKernel
-from tabularGP.prior import ConstantPrior, ZeroPrior, LinearPrior
+from tabularGP.prior import ConstantPrior, ZeroPrior, LinearPrior, LLMPrior
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = ""  # Không sử dụng GPU
+os.environ["NVIDIA_NIM_API_KEY"] = "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"
+
+# =============================================================================
+# Logging Setup
+# =============================================================================
+def setup_logging(cfg):
+    """Setup file + console logging. Returns the log file path."""
+    log_dir = Path("logs")
+    log_dir.mkdir(exist_ok=True)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    kernel_name = cfg.get("kernel", "ProductOfSumsKernel")
+    prior_name = cfg.get("prior", "ConstantPrior")
+    dataset_id = cfg.get("dataset_id", "unknown")
+    log_file = log_dir / f"run_{timestamp}_ds{dataset_id}_{kernel_name}_{prior_name}.log"
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s | %(levelname)s | %(message)s",
+        handlers=[
+            logging.FileHandler(log_file, encoding="utf-8"),
+            logging.StreamHandler(),
+        ],
+        force=True,
+    )
+    return log_file
 # =============================================================================
 # Load Config
 # =============================================================================
@@ -34,13 +63,14 @@ PRIORS = {
     "ConstantPrior": ConstantPrior,
     "ZeroPrior": ZeroPrior,
     "LinearPrior": LinearPrior,
+    "LLMPrior": LLMPrior,
 }
 
 # =============================================================================
 # Load OpenML Dataset
 # =============================================================================
 def load_openml_dataset(dataset_id, target=None, n_samples=None):
-    """Fetch dataset from OpenML and return a pandas DataFrame + target column name."""
+    """Fetch dataset from OpenML and return a pandas DataFrame + target column name + description."""
     print(f"Fetching OpenML dataset id={dataset_id}...")
     data = fetch_openml(data_id=dataset_id, as_frame=True, parser="auto")
     df = data.frame
@@ -50,6 +80,14 @@ def load_openml_dataset(dataset_id, target=None, n_samples=None):
         target = data.target_names[0] if isinstance(data.target_names, list) else data.target_names
     print(f"Target column: '{target}'")
 
+    # Get dataset description from OpenML
+    dataset_name = data.details.get('name', 'unknown')
+    dataset_desc = data.get('DESCR', '') or ''
+    # Truncate if too long (keep first 500 chars for LLM context)
+    if len(dataset_desc) > 500:
+        dataset_desc = dataset_desc[:500] + "..."
+    description = f"{dataset_name}: {dataset_desc}" if dataset_desc else dataset_name
+
     # Drop rows with missing target
     df = df.dropna(subset=[target])
 
@@ -57,8 +95,8 @@ def load_openml_dataset(dataset_id, target=None, n_samples=None):
     if n_samples is not None and n_samples < len(df):
         df = df.sample(n=n_samples, random_state=42).reset_index(drop=True)
 
-    print(f"Dataset: {data.details.get('name', 'unknown')} | Shape: {df.shape}")
-    return df, target
+    print(f"Dataset: {dataset_name} | Shape: {df.shape}")
+    return df, target, description
 
 # =============================================================================
 # Detect column types
@@ -95,17 +133,41 @@ def main():
     plot_fi = cfg.get("plot_feature_importance", False)
 
     kernel = KERNELS[kernel_name]
-    prior = PRIORS[prior_name]
+    prior_cls = PRIORS[prior_name]
 
-    print("=" * 60)
-    print(f"TabularGP | Problem: {problem} | Kernel: {kernel_name} | Prior: {prior_name}")
-    print("=" * 60)
+    # For LLMPrior, we need to create a factory that passes extra config
+    if prior_name == "LLMPrior":
+        llm_cfg = cfg.get("llm_prior", {})
+        llm_lambda = llm_cfg.get("lambda", 0.5)
+        llm_description = llm_cfg.get("dataset_description", "")
+        llm_models = llm_cfg.get("models", [])
+        # Will be set after we know feature names and problem type
+        prior_extra = {
+            "llm_configs": llm_models,
+            "lam": llm_lambda,
+            "dataset_description": llm_description,
+        }
+    else:
+        prior = prior_cls
+        prior_extra = None
+
+    # --- Setup logging ---
+    log_file = setup_logging(cfg)
+    log = logging.getLogger("tabularGP")
+
+    log.info("=" * 60)
+    log.info(f"TabularGP | Problem: {problem} | Kernel: {kernel_name} | Prior: {prior_name}")
+    log.info(f"Config: epochs={epochs}, lr={lr}, noise={noise}, nb_training_points={nb_training_points}")
+    log.info(f"Dataset ID: {dataset_id} | n_samples: {n_samples}")
+    log.info(f"Log file: {log_file}")
+    log.info("=" * 60)
 
     # --- Load data ---
-    df, target = load_openml_dataset(dataset_id, target, n_samples)
+    df, target, dataset_description = load_openml_dataset(dataset_id, target, n_samples)
     cat_names, cont_names = detect_columns(df, target)
-    print(f"Categorical features ({len(cat_names)}): {cat_names}")
-    print(f"Continuous features  ({len(cont_names)}): {cont_names}")
+    log.info(f"Categorical features ({len(cat_names)}): {cat_names}")
+    log.info(f"Continuous features  ({len(cont_names)}): {cont_names}")
+    log.info(f"Dataset shape: {df.shape}")
 
     # --- Convert categorical columns to string (fastai Categorify needs this) ---
     for col in cat_names:
@@ -141,6 +203,32 @@ def main():
     else:
         metric = rmse
 
+    # For LLMPrior, query LLMs once with dataset summary, then pass predictions to prior
+    if prior_extra is not None:
+        from tabularGP.prior import LLMPrior
+        from tabularGP.llm_utils import query_summary_llms
+
+        log.info("Querying LLMs with dataset summary...")
+        # Use OpenML description if config description is empty
+        llm_description = prior_extra["dataset_description"] or dataset_description
+        llm_predictions = query_summary_llms(
+            llm_configs=prior_extra["llm_configs"],
+            df=df,
+            feature_names=cat_names + cont_names,
+            target_name=target,
+            dataset_description=llm_description,
+            problem_type=problem,
+        )
+        log.info(f"LLM predictions: {llm_predictions}")
+
+        llm_lam = prior_extra["lam"]
+        # Create a factory that passes pre-queried predictions
+        class _LLMPriorFactory:
+            def __call__(self, train_cat, train_cont, train_out, emb_szs):
+                return LLMPrior(train_cat, train_cont, train_out, emb_szs,
+                                llm_predictions=llm_predictions, lam=llm_lam)
+        prior = _LLMPriorFactory()
+
     learn = tabularGP_learner(
         data,
         nb_training_points=nb_training_points,
@@ -150,13 +238,35 @@ def main():
         metrics=metric,
     )
 
-    print(f"\nTraining for {epochs} epochs with lr={lr}...")
+    log.info(f"Training for {epochs} epochs with lr={lr}...")
     learn.fit_one_cycle(epochs, lr_max=lr)
 
+    # --- Log per-epoch metrics from fastai recorder ---
+    log.info("")
+    log.info("=" * 60)
+    log.info("Training Log (per epoch)")
+    log.info("=" * 60)
+    recorder = learn.recorder
+    train_losses = recorder.losses            # all batch losses
+    val_losses = recorder.values              # per-epoch: [train_loss, valid_loss, metric, ...]
+    metric_name = "accuracy" if problem == "classification" else "rmse"
+    log.info(f"{'Epoch':<8} {'Train Loss':<15} {'Valid Loss':<15} {metric_name:<15}")
+    log.info("-" * 53)
+    for epoch_idx, vals in enumerate(val_losses):
+        t_loss = f"{vals[0]:.6f}" if vals[0] is not None else "N/A"
+        v_loss = f"{vals[1]:.6f}" if len(vals) > 1 and vals[1] is not None else "N/A"
+        m_val  = f"{vals[2]:.6f}" if len(vals) > 2 and vals[2] is not None else "N/A"
+        log.info(f"{epoch_idx:<8} {t_loss:<15} {v_loss:<15} {m_val:<15}")
+
+    # --- Log LLMPrior lambda if applicable ---
+    if prior_name == "LLMPrior" and hasattr(learn.model.prior, 'lam'):
+        log.info(f"\nLLMPrior final λ (learned): {learn.model.prior.lam.item():.4f}")
+
     # --- Sample Prediction ---
-    print("\n" + "-" * 40)
-    print("Sample predictions (first 5 validation rows):")
-    print("-" * 40)
+    log.info("")
+    log.info("-" * 40)
+    log.info("Sample predictions (first 5 validation rows):")
+    log.info("-" * 40)
     preds, targets = learn.get_preds(dl=data[1])
     val_idx = splits[1][:5]
     for i in range(min(5, len(preds))):
@@ -164,26 +274,28 @@ def main():
         actual = df.iloc[val_idx[i]][target] if i < len(val_idx) else "N/A"
         if problem == "classification":
             pred_label = pred.argmax().item()
-            print(f"  [{i+1}] Predicted: class {pred_label} | Actual: {actual}")
+            log.info(f"  [{i+1}] Predicted: class {pred_label} | Actual: {actual}")
         else:
-            print(f"  [{i+1}] Predicted: {pred.item():.4f} | Actual: {actual}")
+            log.info(f"  [{i+1}] Predicted: {pred.item():.4f} | Actual: {actual}")
 
     # --- Feature Importance ---
-    print("\n" + "-" * 40)
-    print("Feature Importance:")
-    print("-" * 40)
+    log.info("")
+    log.info("-" * 40)
+    log.info("Feature Importance:")
+    log.info("-" * 40)
     importance = learn.feature_importance.sort_values('Importance', ascending=False)
-    print(importance.to_string(index=False))
+    log.info("\n" + importance.to_string(index=False))
 
     if plot_fi:
         learn.plot_feature_importance()
         import matplotlib.pyplot as plt
         plt.savefig("feature_importance.png", bbox_inches="tight", dpi=150)
-        print("\nPlot saved to feature_importance.png")
+        log.info("Plot saved to feature_importance.png")
 
-    print("\n" + "=" * 60)
-    print("Done!")
-    print("=" * 60)
+    log.info("")
+    log.info("=" * 60)
+    log.info(f"Done! Log saved to: {log_file}")
+    log.info("=" * 60)
 
 
 if __name__ == "__main__":

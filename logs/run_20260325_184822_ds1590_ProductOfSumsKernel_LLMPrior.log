@@ -1,0 +1,9 @@
+2026-03-25 18:48:22,736 | INFO | ============================================================
+2026-03-25 18:48:22,737 | INFO | TabularGP | Problem: classification | Kernel: ProductOfSumsKernel | Prior: LLMPrior
+2026-03-25 18:48:22,737 | INFO | Config: epochs=5, lr=0.001, noise=0.01, nb_training_points=500
+2026-03-25 18:48:22,737 | INFO | Dataset ID: 1590 | n_samples: 1000
+2026-03-25 18:48:22,738 | INFO | Log file: logs\run_20260325_184822_ds1590_ProductOfSumsKernel_LLMPrior.log
+2026-03-25 18:48:22,738 | INFO | ============================================================
+2026-03-25 18:48:22,931 | INFO | Categorical features (9): ['workclass', 'education', 'education-num', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'native-country']
+2026-03-25 18:48:22,931 | INFO | Continuous features  (5): ['age', 'fnlwgt', 'capital-gain', 'capital-loss', 'hours-per-week']
+2026-03-25 18:48:22,932 | INFO | Dataset shape: (1000, 15)

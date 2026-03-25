@@ -1,0 +1,410 @@
+2026-03-25 18:50:24,244 | INFO | ============================================================
+2026-03-25 18:50:24,244 | INFO | TabularGP | Problem: classification | Kernel: ProductOfSumsKernel | Prior: LLMPrior
+2026-03-25 18:50:24,244 | INFO | Config: epochs=5, lr=0.001, noise=0.01, nb_training_points=500
+2026-03-25 18:50:24,244 | INFO | Dataset ID: 1590 | n_samples: 1000
+2026-03-25 18:50:24,245 | INFO | Log file: logs\run_20260325_185024_ds1590_ProductOfSumsKernel_LLMPrior.log
+2026-03-25 18:50:24,245 | INFO | ============================================================
+2026-03-25 18:50:24,410 | INFO | Categorical features (9): ['workclass', 'education', 'education-num', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'native-country']
+2026-03-25 18:50:24,410 | INFO | Continuous features  (5): ['age', 'fnlwgt', 'capital-gain', 'capital-loss', 'hours-per-week']
+2026-03-25 18:50:24,410 | INFO | Dataset shape: (1000, 15)
+2026-03-25 18:50:32,504 | INFO | Pre-computing LLM predictions for 500 samples...
+2026-03-25 18:50:32,535 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:32,618 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:32,642 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:32,693 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:32,701 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:32,785 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:32,813 | INFO |   [1/500] LLM avg=0.0000
+2026-03-25 18:50:32,822 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:32,878 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:32,883 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:32,931 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:32,942 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:33,006 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:33,012 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:33,073 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:33,078 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:33,117 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:33,120 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:33,156 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:33,158 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:33,201 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:33,205 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:33,240 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:33,244 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:33,287 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:33,292 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:33,350 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:33,352 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:33,405 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:33,407 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:33,451 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:33,455 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:33,501 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:33,505 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:33,557 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:33,560 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:33,613 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:33,619 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:33,666 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:33,671 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:33,716 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:33,721 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:33,779 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:33,784 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:33,834 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:33,837 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:33,882 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:33,886 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:33,929 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:33,933 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:33,996 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:33,999 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:34,054 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:34,058 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:34,120 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:34,128 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:34,187 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:34,190 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:34,239 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:34,244 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:34,300 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:34,302 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:34,345 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:34,349 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:34,396 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:34,400 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:34,450 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:34,456 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:34,509 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:34,512 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:34,561 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:34,572 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:34,630 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:34,641 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:34,697 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:34,703 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:34,761 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:34,767 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:34,827 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:34,840 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:34,943 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:34,957 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:35,060 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:35,067 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:35,125 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:35,127 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:35,186 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:35,190 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:35,241 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:35,244 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:35,298 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:35,308 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:35,358 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:35,361 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:35,423 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:35,431 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:35,508 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:35,511 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:35,562 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:35,567 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:35,618 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:35,620 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:35,679 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:35,687 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:35,735 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:35,739 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:35,804 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:35,807 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:35,885 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:35,899 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:35,937 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:35,942 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:36,001 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:36,004 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:36,045 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:36,049 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:36,078 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:36,082 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:36,121 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:36,124 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:36,178 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:36,184 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:36,224 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:36,226 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:36,272 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:36,275 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:36,329 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:36,332 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:36,379 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:36,382 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:36,435 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:36,439 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:36,499 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:36,506 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:36,565 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:36,568 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:36,621 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:36,625 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:36,712 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:36,718 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:36,780 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:36,783 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:36,833 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:36,836 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:36,873 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:36,877 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:36,941 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:36,948 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:36,999 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:37,004 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:37,065 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:37,069 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:37,122 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:37,123 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:37,178 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:37,180 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:37,225 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:37,228 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:37,291 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:37,293 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:37,357 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:37,364 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:37,455 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:37,463 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:37,562 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:37,587 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:37,702 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:37,706 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:37,772 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:37,776 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:37,834 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:37,837 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:37,891 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:37,895 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:37,944 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:37,946 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:38,014 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:38,021 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:38,076 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:38,081 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:38,131 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:38,135 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:38,179 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:38,183 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:38,241 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:38,246 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:38,272 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:38,283 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:38,345 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:38,348 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:38,434 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:38,441 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:38,489 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:38,493 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:38,547 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:38,552 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:38,615 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:38,620 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:38,707 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:38,714 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:38,770 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:38,774 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:38,821 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:38,825 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:38,878 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:38,882 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:38,928 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:38,930 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:38,987 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:38,987 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:39,034 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:39,039 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:39,098 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:39,102 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:39,145 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:39,146 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:39,201 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:39,204 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:39,264 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:39,266 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:39,321 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:39,324 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:39,354 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:39,357 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:39,390 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:39,392 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:39,427 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:39,429 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:39,464 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:39,468 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:39,514 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:39,519 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:39,550 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:39,558 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:39,595 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:39,597 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:39,638 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:39,643 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:39,685 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:39,692 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:39,729 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:39,733 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:39,770 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:39,772 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:39,802 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:39,805 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:39,838 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:39,840 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:39,869 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:39,872 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:39,908 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:39,910 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:39,940 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:39,944 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:39,971 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:39,973 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:40,012 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:40,014 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:40,046 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:40,049 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:40,084 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:40,086 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:40,115 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:40,118 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:40,153 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0
+2026-03-25 18:50:40,155 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 18:50:40,190 | WARNING | LLM query failed for model=nvidia_nim/openai/gpt-oss-120b: litellm.AuthenticationError: AuthenticationError: Nvidia_nimException - The api_key client option must be set either by passing api_key to the client or by setting the NVIDIA_NIM_API_KEY environment variable. Using fallback=0.0

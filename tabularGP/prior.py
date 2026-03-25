@@ -9,7 +9,7 @@ from fastai.layers import Embedding
 from torch import nn, Tensor
 import torch
 
-__all__ = ['ZeroPrior', 'ConstantPrior', 'LinearPrior']
+__all__ = ['ZeroPrior', 'ConstantPrior', 'LinearPrior', 'LLMPrior']
 
 #--------------------------------------------------------------------------------------------------
 # abstract class
@@ -63,3 +63,70 @@ class LinearPrior(Prior):
         if self.nb_cont != 0:
             x = torch.cat([x, x_cont], 1) if self.nb_embeddings != 0 else x_cont
         return self.model(x)
+
+#--------------------------------------------------------------------------------------------------
+# LLM-based prior
+
+import logging
+_logger = logging.getLogger(__name__)
+
+class LLMPrior(Prior):
+    """
+    Prior that uses multiple LLMs to generate a constant prediction.
+
+    Each LLM is queried ONCE with a summary of the dataset (raw feature stats + sample rows).
+    Their predictions are combined via:
+
+        prior = λ * (1/n * Σ llm_i) + (1-λ) * mean
+
+    This results in a single constant prior value for all samples.
+    Lambda (λ) is trainable via gradient descent.
+    """
+    def __init__(self, train_input_cat:Tensor, train_input_cont:Tensor, train_outputs:Tensor,
+                 embedding_sizes, llm_predictions=None, lam=0.5):
+        """
+        Args:
+            llm_predictions: List of float predictions, one per LLM (pre-queried in main.py)
+            lam: Initial lambda value (0 = pure mean, 1 = pure LLM)
+        """
+        super().__init__(train_input_cat, train_input_cont, train_outputs, embedding_sizes)
+
+        # Trainable lambda parameter (clamped to [0, 1] via sigmoid)
+        self.raw_lambda = nn.Parameter(torch.tensor(float(lam)).logit())
+
+        # Mean of training outputs
+        mean_val = train_outputs.mean(dim=0)
+        self.register_buffer('mean_output', mean_val)
+
+        # Average of LLM predictions (constant)
+        llm_predictions = llm_predictions or []
+        if len(llm_predictions) > 0:
+            llm_avg = sum(llm_predictions) / len(llm_predictions)
+        else:
+            llm_avg = mean_val[0].item() if mean_val.dim() > 0 else mean_val.item()
+        self.register_buffer('llm_avg', torch.tensor([llm_avg]))
+
+        _logger.info(f"LLMPrior initialized: λ_init={lam:.2f}, "
+                     f"llm_avg={llm_avg:.4f}, mean={mean_val.tolist()}")
+
+    @property
+    def lam(self):
+        """Lambda clamped to [0, 1] via sigmoid."""
+        return torch.sigmoid(self.raw_lambda)
+
+    def forward(self, x_cat: Tensor, x_cont: Tensor):
+        """
+        Compute prior: λ * llm_avg + (1-λ) * mean
+        Returns same constant for all samples (broadcast).
+        """
+        lam = self.lam
+        prior_value = lam * self.llm_avg + (1 - lam) * self.mean_output
+
+        # Broadcast to batch size
+        batch_size = x_cont.size(0) if x_cont.dim() > 1 else 1
+        if batch_size > 1:
+            prior_value = prior_value.unsqueeze(0).expand(batch_size, -1)
+
+        return prior_value
+
+

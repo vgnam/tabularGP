@@ -42,7 +42,7 @@ class TabularGPModel(nn.Module):
         self.std_noise = nn.Parameter(output_std * noise)
         embedding_sizes = get_emb_sz(training_data.train_ds, {} if embedding_sizes is None else embedding_sizes)
         self.kernel = kernel(train_input_cat, train_input_cont, embedding_sizes, **kernel_kwargs) if isinstance(kernel,type) else kernel
-        self.prior = prior(train_input_cat, train_input_cont, train_outputs, embedding_sizes) if isinstance(prior,type) else prior
+        self.prior = prior(train_input_cat, train_input_cont, train_outputs, embedding_sizes) if (isinstance(prior,type) or (callable(prior) and not isinstance(prior, nn.Module))) else prior
         # storage for memoized values
         self._output_weights = None
         self._L_train_train = None
@@ -157,7 +157,7 @@ def tabularGP_learner(data, nb_training_points:int=4000, use_random_training_poi
         freeze(kernel) # freezes kernel when doing transfer learning
     # prior
     if isinstance(prior, Learner): prior = prior.model
-    if not isinstance(prior, type):
+    if not isinstance(prior, type) and isinstance(prior, nn.Module):
         freeze(prior) # freezes prior when doing transfer learning
     # defines the model
     model = TabularGPModel(training_data=data, nb_training_points=nb_training_points, use_random_training_points=use_random_training_points,

@@ -1,0 +1,89 @@
+2026-03-25 19:10:17,993 | INFO | ============================================================
+2026-03-25 19:10:17,993 | INFO | TabularGP | Problem: classification | Kernel: ProductOfSumsKernel | Prior: LLMPrior
+2026-03-25 19:10:17,995 | INFO | Config: epochs=20, lr=0.001, noise=0.01, nb_training_points=500
+2026-03-25 19:10:17,995 | INFO | Dataset ID: 1590 | n_samples: 1000
+2026-03-25 19:10:17,995 | INFO | Log file: logs\run_20260325_191017_ds1590_ProductOfSumsKernel_LLMPrior.log
+2026-03-25 19:10:17,995 | INFO | ============================================================
+2026-03-25 19:10:18,127 | INFO | Categorical features (9): ['workclass', 'education', 'education-num', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'native-country']
+2026-03-25 19:10:18,129 | INFO | Continuous features  (5): ['age', 'fnlwgt', 'capital-gain', 'capital-loss', 'hours-per-week']
+2026-03-25 19:10:18,129 | INFO | Dataset shape: (1000, 15)
+2026-03-25 19:10:20,502 | INFO | Querying LLMs with dataset summary...
+2026-03-25 19:10:20,515 | INFO | Querying 3 LLMs with dataset summary (1000 samples)...
+2026-03-25 19:10:20,528 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 19:10:22,584 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 19:10:22,597 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.231 (raw: 'The class distribution gives a direct estimate of the overall probability of earning >\u202f50K: 231 out of 1\u202f000 records, i.e.,\u202f231\u202f/\u202f1000\u202f=\u202f0.231. Assuming a binary encoding (<=50K\u202f=\u202f0, >50K\u202f=\u202f1), the expected value of the target is this probability.\n\nPREDICTION: 0.231')
+2026-03-25 19:10:22,598 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 19:10:24,168 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 19:10:24,169 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.231 (raw: 'The Adult dataset is highly imbalanced toward the lower‑income class. In the provided 1\u202f000‑record sample, 769 instances are “<=50K” and 231 are “>50K”. If we encode the target as 0 for “<=50K” and 1 for “>50K”, the expected value (i.e., the mean of the target) equals the proportion of the positive class: 231\u202f/\u202f1000\u202f≈\u202f0.231.  \n\nPREDICTION: 0.231')
+2026-03-25 19:10:24,170 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 19:10:28,662 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 19:10:28,662 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.231 (raw: '**Identified patterns**\n\n1. **Income‑related demographics** –  \n   * *Education*: Individuals with Bachelors, Masters, Prof‑specialty or higher education‑num (≥13) appear more often in the >50K group.  \n   * *Occupation*: Exec‑managerial, Prof‑specialty, and Craft‑repair have a higher share of >50K than other jobs.  \n   * *Marital status*: Married‑civ‑spouse shows a larger proportion of >50K compared with never‑married or divorced.\n\n2. **Financial signals** –  \n   * *Capital‑gain*: Very strong indicator; most >50K rows have a non‑zero capital‑gain (e.g., 14\u202f344 in the sample).  \n   * *Hours‑per‑week*: Values\u202f>\u202f40 are modestly more common among >50K earners.\n\n3. **Age and work experience** –  \n   * *Age*: Mean age of >50K is roughly mid‑40s, higher than the overall mean of 38.8.  \n   * *Workclass*: Private dominates both classes, but Self‑emp‑inc and Federal‑gov have a slightly higher >50K rate.\n\n4. **Gender and race** –  \n   * *Sex*: Males constitute about two‑thirds of the data and have a higher >50K ratio than females.  \n   * *Race*: White individuals dominate the sample and also the >50K group; minority groups have lower >50K rates.\n\nThese patterns confirm that the **baseline prevalence** of the >50K class (≈23\u202f% of the 1\u202f000 records) already captures much of the expected outcome for a random individual from this subset.  \n\n**Prediction of overall expected value**  \nUsing the empirical class distribution as the best unbiased estimator for a random record, the expected proportion of the >50K class is:\n\n\\[\n\\text{E}[Y] = \\frac{231}{1000} = 0.231\n\\]\n\nHence the overall expected value (probability) of the target variable “>50K” is **0.231**.\n\nPREDICTION: 0.231')
+2026-03-25 19:10:28,664 | INFO | LLM predictions: [0.231, 0.231, 0.231]
+2026-03-25 19:10:28,664 | INFO | LLM predictions: [0.231, 0.231, 0.231]
+2026-03-25 19:10:28,748 | INFO | LLMPrior initialized: λ_init=0.50, llm_avg=0.2310, mean=[0.7979999780654907, 0.20200000703334808]
+2026-03-25 19:10:28,749 | INFO | Training for 20 epochs with lr=0.001...
+2026-03-25 19:10:45,420 | INFO | 
+2026-03-25 19:10:45,421 | INFO | ============================================================
+2026-03-25 19:10:45,421 | INFO | Training Log (per epoch)
+2026-03-25 19:10:45,421 | INFO | ============================================================
+2026-03-25 19:10:45,421 | INFO | Epoch    Train Loss      Valid Loss      accuracy       
+2026-03-25 19:10:45,421 | INFO | -----------------------------------------------------
+2026-03-25 19:10:45,422 | INFO | 0        78.465553       71.071854       0.815000       
+2026-03-25 19:10:45,422 | INFO | 1        75.179840       69.647179       0.810000       
+2026-03-25 19:10:45,422 | INFO | 2        85.325218       70.309921       0.810000       
+2026-03-25 19:10:45,422 | INFO | 3        81.881096       69.424080       0.810000       
+2026-03-25 19:10:45,422 | INFO | 4        79.148308       68.512703       0.810000       
+2026-03-25 19:10:45,423 | INFO | 5        76.610245       67.728546       0.810000       
+2026-03-25 19:10:45,423 | INFO | 6        75.445381       67.035431       0.810000       
+2026-03-25 19:10:45,423 | INFO | 7        74.440453       66.214630       0.810000       
+2026-03-25 19:10:45,423 | INFO | 8        73.229118       65.459381       0.810000       
+2026-03-25 19:10:45,423 | INFO | 9        73.414322       64.680542       0.810000       
+2026-03-25 19:10:45,424 | INFO | 10       73.960091       63.971504       0.810000       
+2026-03-25 19:10:45,424 | INFO | 11       72.343010       63.463551       0.810000       
+2026-03-25 19:10:45,425 | INFO | 12       70.299057       63.110939       0.815000       
+2026-03-25 19:10:45,425 | INFO | 13       69.067642       62.839237       0.815000       
+2026-03-25 19:10:45,425 | INFO | 14       68.094460       62.608101       0.815000       
+2026-03-25 19:10:45,425 | INFO | 15       67.990639       62.439598       0.810000       
+2026-03-25 19:10:45,426 | INFO | 16       66.967865       62.346867       0.810000       
+2026-03-25 19:10:45,426 | INFO | 17       66.056725       62.303795       0.810000       
+2026-03-25 19:10:45,426 | INFO | 18       65.776421       62.288551       0.810000       
+2026-03-25 19:10:45,426 | INFO | 19       65.355240       62.288109       0.810000       
+2026-03-25 19:10:45,427 | INFO | 
+LLMPrior final λ (learned): 0.5011
+2026-03-25 19:10:45,427 | INFO | 
+2026-03-25 19:10:45,427 | INFO | ----------------------------------------
+2026-03-25 19:10:45,427 | INFO | Sample predictions (first 5 validation rows):
+2026-03-25 19:10:45,427 | INFO | ----------------------------------------
+2026-03-25 19:10:45,477 | INFO |   [1] Predicted: class 1 | Actual: >50K
+2026-03-25 19:10:45,477 | INFO |   [2] Predicted: class 0 | Actual: <=50K
+2026-03-25 19:10:45,478 | INFO |   [3] Predicted: class 0 | Actual: <=50K
+2026-03-25 19:10:45,479 | INFO |   [4] Predicted: class 1 | Actual: >50K
+2026-03-25 19:10:45,479 | INFO |   [5] Predicted: class 0 | Actual: >50K
+2026-03-25 19:10:45,479 | INFO | 
+2026-03-25 19:10:45,480 | INFO | ----------------------------------------
+2026-03-25 19:10:45,480 | INFO | Feature Importance:
+2026-03-25 19:10:45,480 | INFO | ----------------------------------------
+2026-03-25 19:10:45,486 | INFO | 
+      Variable  Importance
+           age    0.029892
+hours-per-week    0.024846
+  capital-gain    0.024377
+     workclass    0.022692
+native-country    0.020471
+           sex    0.018231
+  capital-loss    0.018215
+          race    0.018097
+ education-num    0.015302
+     education    0.013821
+        fnlwgt    0.012359
+    occupation    0.012337
+marital-status    0.012139
+  relationship    0.011418
+2026-03-25 19:10:45,883 | INFO | Plot saved to feature_importance.png
+2026-03-25 19:10:45,884 | INFO | 
+2026-03-25 19:10:45,884 | INFO | ============================================================
+2026-03-25 19:10:45,884 | INFO | Done! Log saved to: logs\run_20260325_191017_ds1590_ProductOfSumsKernel_LLMPrior.log
+2026-03-25 19:10:45,884 | INFO | ============================================================
