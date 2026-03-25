@@ -1,0 +1,27 @@
+2026-03-25 19:25:21,920 | INFO | ============================================================
+2026-03-25 19:25:21,920 | INFO | TabularGP | Problem: classification | Kernel: ProductOfSumsKernel | Prior: LLMPrior
+2026-03-25 19:25:21,921 | INFO | Config: epochs=5, lr=0.001, noise=0.01, nb_training_points=500
+2026-03-25 19:25:21,921 | INFO | Dataset ID: 1590 | n_samples: None
+2026-03-25 19:25:21,921 | INFO | Log file: logs\run_20260325_192521_ds1590_ProductOfSumsKernel_LLMPrior.log
+2026-03-25 19:25:21,921 | INFO | ============================================================
+2026-03-25 19:25:22,055 | INFO | Categorical features (9): ['workclass', 'education', 'education-num', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'native-country']
+2026-03-25 19:25:22,057 | INFO | Continuous features  (5): ['age', 'fnlwgt', 'capital-gain', 'capital-loss', 'hours-per-week']
+2026-03-25 19:25:22,057 | INFO | Dataset shape: (48842, 15)
+2026-03-25 19:25:24,779 | INFO | Querying LLMs with dataset summary...
+2026-03-25 19:25:24,862 | INFO | Querying 3 LLMs with dataset summary (48842 samples)...
+2026-03-25 19:25:24,876 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 19:25:29,134 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 19:25:29,148 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.2393 (raw: 'The target is binary (<=\u202f50\u202fK\u202f=\u202f0, >\u202f50\u202fK\u202f=\u202f1). Using the given class counts, the empirical probability of the positive class is:\n\n\\[\nP(\\text{>50K}) = \\frac{11{,}687}{37{,}155 + 11{,}687} = \\frac{11{,}687}{48{,}842} \\approx 0.2393.\n\\]\n\nThus, the overall expected value of the target (interpreted as the mean of the binary label) is about 23.9\u202f%.\n\nPREDICTION: 0.2393')
+2026-03-25 19:25:29,148 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 19:25:34,042 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 19:25:34,043 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.2393 (raw: 'The target is binary (≤50K\u202f=\u202f0,\u202f>50K\u202f=\u202f1). The overall expected value is simply the proportion of records in the positive class. From the summary the dataset contains 11\u202f687 instances of “>50K” out of 48\u202f842 total records, giving an overall positive rate of about 23.9\u202f%.  \n\nPREDICTION: 0.2393')
+2026-03-25 19:25:34,045 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 19:25:38,151 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 19:25:38,152 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.239 (raw: '**Identified patterns**\n\n| Feature | How it relates to earning\u202f>\u202f50K |\n|---------|---------------------------------|\n| **Education / education‑num** | Higher levels (Bachelors, Masters, Prof‑specialty) and higher numeric values strongly correlate with >50K. |\n| **Capital‑gain** | Most >50K records have non‑zero capital‑gain (e.g., 7688 in sample). The mean gain is low overall because the majority are 0, but the tail drives the high‑income class. |\n| **Hours‑per‑week** | >50K workers tend to log >40\u202fh/week (many 45–60\u202fh). |\n| **Occupation** | ‘Prof‑specialty’, ‘Exec‑managerial’, ‘Craft‑repair’, ‘Sales’ appear disproportionately in the >50K group. |\n| **Sex** | Males are over‑represented (~67\u202f% of dataset but ~75\u202f% of >50K). |\n| **Marital‑status** | Married‑civ‑spouse is the dominant marital status among >50K earners. |\n| **Age** | Older ages (≈40‑50) are more common in >50K, though the distribution is wide. |\n| **Race / native‑country** | White and US‑born individuals dominate the >50K class, reflecting the overall population skew. |\n| **Workclass** | Private and Self‑emp‑inc/ not‑inc have higher >50K rates than Government categories. |\n| **Missing values** | Records with missing ‘workclass’ or ‘occupation’ are typically low‑income, pulling the overall proportion down. |\n\nThese patterns collectively suggest that only a minority of the 48\u202f842 rows belong to the high‑income class. The empirical class balance in the summary gives the best unbiased estimate for the overall expected value when encoding ≤50K\u202f=\u202f0 and\u202f>\u202f50K\u202f=\u202f1.\n\n**Overall expected value**\n\n\\[\nE[\\text{class}] = P(\\text{>50K}) = \\frac{11\\,687}{48\\,842} \\approx 0.239\n\\]\n\nThus, the expected value of the target variable (with 1\u202f=\u202f>50K, 0\u202f=\u202f≤50K) is about **0.239**.\n\nPREDICTION: 0.239')
+2026-03-25 19:25:38,155 | INFO | LLM predictions: [0.2393, 0.2393, 0.239]
+2026-03-25 19:25:38,155 | INFO | LLM predictions: [0.2393, 0.2393, 0.239]
+2026-03-25 19:25:38,640 | INFO | LLMPrior initialized: λ_init=0.50, llm_avg=0.2392, mean=[0.7559999823570251, 0.24400000274181366]
+2026-03-25 19:25:38,642 | INFO | Training for 5 epochs with lr=0.001...

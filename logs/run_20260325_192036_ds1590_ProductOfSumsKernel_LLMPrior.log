@@ -1,0 +1,27 @@
+2026-03-25 19:20:36,369 | INFO | ============================================================
+2026-03-25 19:20:36,369 | INFO | TabularGP | Problem: classification | Kernel: ProductOfSumsKernel | Prior: LLMPrior
+2026-03-25 19:20:36,369 | INFO | Config: epochs=20, lr=0.001, noise=0.01, nb_training_points=500
+2026-03-25 19:20:36,369 | INFO | Dataset ID: 1590 | n_samples: None
+2026-03-25 19:20:36,370 | INFO | Log file: logs\run_20260325_192036_ds1590_ProductOfSumsKernel_LLMPrior.log
+2026-03-25 19:20:36,370 | INFO | ============================================================
+2026-03-25 19:20:36,506 | INFO | Categorical features (9): ['workclass', 'education', 'education-num', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'native-country']
+2026-03-25 19:20:36,506 | INFO | Continuous features  (5): ['age', 'fnlwgt', 'capital-gain', 'capital-loss', 'hours-per-week']
+2026-03-25 19:20:36,506 | INFO | Dataset shape: (48842, 15)
+2026-03-25 19:20:39,002 | INFO | Querying LLMs with dataset summary...
+2026-03-25 19:20:39,084 | INFO | Querying 3 LLMs with dataset summary (48842 samples)...
+2026-03-25 19:20:39,094 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 19:20:42,092 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 19:20:42,104 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.239 (raw: 'The target is binary (≤\u202f50K\u202f=\u202f0,\u202f>\u202f50K\u202f=\u202f1).  \nWithout any additional information, the best unbiased estimate of the expected value of a binary variable is its overall prevalence in the data. The dataset contains 11\u202f687 instances of “>\u202f50K” out of 48\u202f842 total, giving a proportion of  \n\n\\[\n\\frac{11\\,687}{48\\,842}\\approx0.2393.\n\\]\n\nThus the expected value (i.e., the probability of a randomly drawn individual earning\u202f>\u202f50\u202fK) is about 23.9\u202f%.\n\n**PREDICTION: 0.239**')
+2026-03-25 19:20:42,105 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 19:20:45,564 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 19:20:45,565 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.2393 (raw: 'The Adult census data is heavily skewed toward the lower‑income class; historically about 75\u202f% of records earn ≤\u202f50\u202fK and roughly 25\u202f% earn >\u202f50\u202fK. This reflects the underlying population distribution and the typical socioeconomic breakdown in the 1994 US census sample. Consequently, the expected value of the binary target (where “>50K” is coded as\u202f1 and “≤50K” as\u202f0) is simply the proportion of the positive class, which is 11\u202f687\u202f/\u202f48\u202f842 ≈\u202f0.239\u202f(about\u202f24\u202f%).  \n\nPREDICTION: 0.2393')
+2026-03-25 19:20:45,566 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 19:20:48,946 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 19:20:48,948 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.2392 (raw: '**Identified patterns**\n\n- **Education & income** – People with a Bachelors, Masters or higher‐education degrees (and the numeric proxy\u202feducation‑num\u202f≥\u202f13) are far more likely to be in the “>50K” class.  \n- **Occupation** – Positions such as *Prof‑specialty*, *Exec‑managerial* and *Craft‑repair* have a higher proportion of >50K compared to *Handlers‑cleaners* or *Other‑service*.  \n- **Workclass** – *Self‑emp‑inc* and *Federal‑gov* show elevated >50K rates, while *Private* is mixed but still the largest source of high earners simply due to volume.  \n- **Hours‑per‑week & capital‑gain** – Long work weeks (≥\u202f45\u202fh) and non‑zero capital‑gain (especially >\u202f5\u202f000) strongly correlate with >50K.  \n- **Demographics** – Males, adults aged\u202f30‑50, and native‑country\u202f=\u202fUnited‑States have higher >50K prevalence; the “>50K” share declines for younger (<\u202f25) or older (>\u202f65) ages and for females.\n\nThese patterns explain why the overall proportion of high‑income individuals in the sample is roughly a quarter of the population.\n\n**Overall expected value** (probability of >50K) = 11\u202f687\u202f/\u202f48\u202f842 ≈\u202f0.2392  \n\nPREDICTION: 0.2392')
+2026-03-25 19:20:48,948 | INFO | LLM predictions: [0.239, 0.2393, 0.2392]
+2026-03-25 19:20:48,949 | INFO | LLM predictions: [0.239, 0.2393, 0.2392]
+2026-03-25 19:20:49,430 | INFO | LLMPrior initialized: λ_init=0.50, llm_avg=0.2392, mean=[0.7559999823570251, 0.24400000274181366]
+2026-03-25 19:20:49,431 | INFO | Training for 20 epochs with lr=0.001...

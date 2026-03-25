@@ -238,6 +238,7 @@ def main():
         metrics=metric,
     )
 
+
     log.info(f"Training for {epochs} epochs with lr={lr}...")
     learn.fit_one_cycle(epochs, lr_max=lr)
 

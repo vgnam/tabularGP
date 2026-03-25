@@ -1,0 +1,29 @@
+2026-03-25 19:16:41,244 | INFO | ============================================================
+2026-03-25 19:16:41,244 | INFO | TabularGP | Problem: classification | Kernel: ProductOfSumsKernel | Prior: LLMPrior
+2026-03-25 19:16:41,244 | INFO | Config: epochs=20, lr=0.001, noise=0.01, nb_training_points=500
+2026-03-25 19:16:41,245 | INFO | Dataset ID: 1590 | n_samples: None
+2026-03-25 19:16:41,245 | INFO | Log file: logs\run_20260325_191641_ds1590_ProductOfSumsKernel_LLMPrior.log
+2026-03-25 19:16:41,245 | INFO | ============================================================
+2026-03-25 19:16:41,382 | INFO | Categorical features (9): ['workclass', 'education', 'education-num', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'native-country']
+2026-03-25 19:16:41,383 | INFO | Continuous features  (5): ['age', 'fnlwgt', 'capital-gain', 'capital-loss', 'hours-per-week']
+2026-03-25 19:16:41,383 | INFO | Dataset shape: (48842, 15)
+2026-03-25 19:16:43,932 | INFO | Querying LLMs with dataset summary...
+2026-03-25 19:16:44,015 | INFO | Querying 3 LLMs with dataset summary (48842 samples)...
+2026-03-25 19:16:44,028 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 19:16:47,652 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 19:16:47,662 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.2391 (raw: 'The target is a binary indicator (≤\u202f50K\u202f=\u202f0,\u202f>\u202f50K\u202f=\u202f1). Its expected value equals the proportion of records with income\u202f>\u202f50K. From the given distribution, 11\u202f687 out of 48\u202f842 instances belong to the >\u202f50K class, giving an empirical probability of roughly 11\u202f687\u202f/\u202f48\u202f842\u202f≈\u202f0.239. This proportion is the best unbiased estimate of the overall expected value of the target variable.\n\nPREDICTION: 0.2391')
+2026-03-25 19:16:47,664 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 19:16:49,849 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 19:16:49,851 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.239 (raw: 'The adult census data exhibits a clear imbalance: roughly 24\u202f% of the records earn >\u202f$50K, while the remaining 76\u202f% earn ≤\u202f$50K. This proportion reflects the overall probability (expected value) of the positive class (>\u202f50K) when averaging over the entire population. The distribution is driven by known socioeconomic patterns (e.g., higher education, certain occupations, and longer work hours increase the chance of the >\u202f50K outcome), but without any additional weighting these patterns sum to the observed overall rate.\n\n**PREDICTION: 0.239**')
+2026-03-25 19:16:49,852 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 19:16:52,003 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 19:16:52,004 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.239 (raw: 'The data shows that the >50K class (≈24\u202f% of the records) is strongly linked to higher education levels (Bachelors, Masters, Prof‑specialty occupations), older age, larger capital‑gain amounts, longer work hours, and being male. Conversely, the ≤50K class dominates among younger individuals, lower education (HS‑grad, Some‑college), lower or zero capital‑gain, and certain job types (e.g., Machine‑op‑inspct, Farming‑fishing). These patterns suggest the overall probability of a randomly drawn person earning >50K is roughly the observed class proportion.\n\nPREDICTION: 0.239')
+2026-03-25 19:16:52,005 | INFO | LLM predictions: [0.2391, 0.239, 0.239]
+2026-03-25 19:16:52,005 | INFO | LLM predictions: [0.2391, 0.239, 0.239]
+2026-03-25 19:16:52,478 | INFO | LLMPrior initialized: λ_init=0.50, llm_avg=0.2390, prior_0=[0.7559999823570251, 0.24400000274181366]
+2026-03-25 19:16:52,480 | INFO | Training for 20 epochs with lr=0.001...
+2026-03-25 19:17:32,290 | INFO | LLMPrior step 1: λ=0.5000, prior=[0.4975166618824005, 0.24151666462421417]
+2026-03-25 19:18:14,918 | INFO | LLMPrior step 2: λ=0.5000, prior=[0.368274986743927, 0.24027499556541443]

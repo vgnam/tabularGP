@@ -1,0 +1,55 @@
+2026-03-25 19:29:46,852 | INFO | ============================================================
+2026-03-25 19:29:46,853 | INFO | TabularGP | Problem: classification | Kernel: ProductOfSumsKernel | Prior: LinearPrior
+2026-03-25 19:29:46,853 | INFO | Config: epochs=5, lr=0.001, noise=0.01, nb_training_points=500
+2026-03-25 19:29:46,853 | INFO | Dataset ID: 1590 | n_samples: None
+2026-03-25 19:29:46,854 | INFO | Log file: logs\run_20260325_192946_ds1590_ProductOfSumsKernel_LinearPrior.log
+2026-03-25 19:29:46,854 | INFO | ============================================================
+2026-03-25 19:29:46,987 | INFO | Categorical features (9): ['workclass', 'education', 'education-num', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'native-country']
+2026-03-25 19:29:46,987 | INFO | Continuous features  (5): ['age', 'fnlwgt', 'capital-gain', 'capital-loss', 'hours-per-week']
+2026-03-25 19:29:46,988 | INFO | Dataset shape: (48842, 15)
+2026-03-25 19:29:47,761 | INFO | Training for 5 epochs with lr=0.001...
+2026-03-25 19:34:22,369 | INFO | 
+2026-03-25 19:34:22,369 | INFO | ============================================================
+2026-03-25 19:34:22,369 | INFO | Training Log (per epoch)
+2026-03-25 19:34:22,369 | INFO | ============================================================
+2026-03-25 19:34:22,371 | INFO | Epoch    Train Loss      Valid Loss      accuracy       
+2026-03-25 19:34:22,371 | INFO | -----------------------------------------------------
+2026-03-25 19:34:22,371 | INFO | 0        100.871773      50.685112       0.784705       
+2026-03-25 19:34:22,371 | INFO | 1        90.700951       45.003780       0.759623       
+2026-03-25 19:34:22,371 | INFO | 2        44.635086       44.001541       0.759111       
+2026-03-25 19:34:22,371 | INFO | 3        45.347675       43.428959       0.759111       
+2026-03-25 19:34:22,372 | INFO | 4        43.475342       43.403034       0.759111       
+2026-03-25 19:34:22,372 | INFO | 
+2026-03-25 19:34:22,373 | INFO | ----------------------------------------
+2026-03-25 19:34:22,373 | INFO | Sample predictions (first 5 validation rows):
+2026-03-25 19:34:22,373 | INFO | ----------------------------------------
+2026-03-25 19:34:24,401 | INFO |   [1] Predicted: class 0 | Actual: <=50K
+2026-03-25 19:34:24,402 | INFO |   [2] Predicted: class 0 | Actual: <=50K
+2026-03-25 19:34:24,402 | INFO |   [3] Predicted: class 0 | Actual: <=50K
+2026-03-25 19:34:24,403 | INFO |   [4] Predicted: class 0 | Actual: >50K
+2026-03-25 19:34:24,404 | INFO |   [5] Predicted: class 0 | Actual: <=50K
+2026-03-25 19:34:24,404 | INFO | 
+2026-03-25 19:34:24,405 | INFO | ----------------------------------------
+2026-03-25 19:34:24,405 | INFO | Feature Importance:
+2026-03-25 19:34:24,405 | INFO | ----------------------------------------
+2026-03-25 19:34:24,414 | INFO | 
+      Variable  Importance
+hours-per-week    0.017726
+marital-status    0.011484
+  capital-gain    0.011287
+          race    0.010205
+           sex    0.009768
+     education    0.009246
+  capital-loss    0.007840
+           age    0.006830
+  relationship    0.005280
+native-country    0.005085
+     workclass    0.004915
+        fnlwgt    0.004699
+ education-num    0.001204
+    occupation    0.000824
+2026-03-25 19:34:24,937 | INFO | Plot saved to feature_importance.png
+2026-03-25 19:34:24,937 | INFO | 
+2026-03-25 19:34:24,937 | INFO | ============================================================
+2026-03-25 19:34:24,937 | INFO | Done! Log saved to: logs\run_20260325_192946_ds1590_ProductOfSumsKernel_LinearPrior.log
+2026-03-25 19:34:24,937 | INFO | ============================================================

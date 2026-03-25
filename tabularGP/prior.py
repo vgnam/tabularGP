@@ -74,31 +74,22 @@ class LLMPrior(Prior):
     """
     Prior that uses multiple LLMs to generate a constant prediction.
 
-    Each LLM is queried ONCE with a summary of the dataset (raw feature stats + sample rows).
-    Their predictions are combined via:
+    Formula: prior = λ * llm_avg + (1-λ) * mean
 
-        prior = λ * (1/n * Σ llm_i) + (1-λ) * mean
-
-    This results in a single constant prior value for all samples.
-    Lambda (λ) is trainable via gradient descent.
+    Lambda (λ) is an nn.Parameter, updated by gradient descent each batch.
     """
     def __init__(self, train_input_cat:Tensor, train_input_cont:Tensor, train_outputs:Tensor,
                  embedding_sizes, llm_predictions=None, lam=0.5):
-        """
-        Args:
-            llm_predictions: List of float predictions, one per LLM (pre-queried in main.py)
-            lam: Initial lambda value (0 = pure mean, 1 = pure LLM)
-        """
         super().__init__(train_input_cat, train_input_cont, train_outputs, embedding_sizes)
 
-        # Trainable lambda parameter (clamped to [0, 1] via sigmoid)
+        # Trainable lambda (clamped to [0, 1] via sigmoid)
         self.raw_lambda = nn.Parameter(torch.tensor(float(lam)).logit())
 
-        # Mean of training outputs
+        # Mean of training outputs (fixed)
         mean_val = train_outputs.mean(dim=0)
         self.register_buffer('mean_output', mean_val)
 
-        # Average of LLM predictions (constant)
+        # Average of LLM predictions (fixed)
         llm_predictions = llm_predictions or []
         if len(llm_predictions) > 0:
             llm_avg = sum(llm_predictions) / len(llm_predictions)
@@ -111,22 +102,12 @@ class LLMPrior(Prior):
 
     @property
     def lam(self):
-        """Lambda clamped to [0, 1] via sigmoid."""
         return torch.sigmoid(self.raw_lambda)
 
     def forward(self, x_cat: Tensor, x_cont: Tensor):
-        """
-        Compute prior: λ * llm_avg + (1-λ) * mean
-        Returns same constant for all samples (broadcast).
-        """
         lam = self.lam
         prior_value = lam * self.llm_avg + (1 - lam) * self.mean_output
-
-        # Broadcast to batch size
         batch_size = x_cont.size(0) if x_cont.dim() > 1 else 1
         if batch_size > 1:
             prior_value = prior_value.unsqueeze(0).expand(batch_size, -1)
-
         return prior_value
-
-

@@ -1,0 +1,110 @@
+2026-03-25 19:15:07,101 | INFO | ============================================================
+2026-03-25 19:15:07,101 | INFO | TabularGP | Problem: classification | Kernel: ProductOfSumsKernel | Prior: LLMPrior
+2026-03-25 19:15:07,102 | INFO | Config: epochs=20, lr=0.001, noise=0.01, nb_training_points=500
+2026-03-25 19:15:07,102 | INFO | Dataset ID: 1590 | n_samples: 1000
+2026-03-25 19:15:07,102 | INFO | Log file: logs\run_20260325_191507_ds1590_ProductOfSumsKernel_LLMPrior.log
+2026-03-25 19:15:07,102 | INFO | ============================================================
+2026-03-25 19:15:07,250 | INFO | Categorical features (9): ['workclass', 'education', 'education-num', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'native-country']
+2026-03-25 19:15:07,251 | INFO | Continuous features  (5): ['age', 'fnlwgt', 'capital-gain', 'capital-loss', 'hours-per-week']
+2026-03-25 19:15:07,251 | INFO | Dataset shape: (1000, 15)
+2026-03-25 19:15:09,898 | INFO | Querying LLMs with dataset summary...
+2026-03-25 19:15:09,912 | INFO | Querying 3 LLMs with dataset summary (1000 samples)...
+2026-03-25 19:15:09,925 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 19:15:13,992 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 19:15:14,007 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.231 (raw: 'The target variable is binary (<=50K\u202f=\u202f0, >50K\u202f=\u202f1). The summary provides the class counts for the 1\u202f000‑sample subset: 769 instances of “<=50K” and 231 instances of “>50K”. The expected value of a binary variable equals the proportion of the positive class, i.e.,\u202fE[Y]\u202f=\u202f#(>50K)/total\u202f=\u202f231/1000\u202f≈\u202f0.231.  \n\nPREDICTION: 0.231')
+2026-03-25 19:15:14,009 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 19:15:15,990 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 19:15:15,992 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.231 (raw: 'The Adult census data is heavily imbalanced toward the “<=\u202f50K” class (≈\u202f77\u202f%). Historically, the proportion of high‑income individuals in the full dataset is around 20‑25\u202f%. Given the summarized sample of 1,000 rows matches this distribution (231 of 1,000 are “>\u202f50K”), the best estimate of the overall expected value—interpreting the target as a binary variable (1 for\u202f>\u202f50K, 0 for\u202f<=\u202f50K)—is simply the observed prevalence of the positive class.\n\nPREDICTION: 0.231')
+2026-03-25 19:15:15,993 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-25 19:15:18,522 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-25 19:15:18,526 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 0.231 (raw: '**Identified patterns**\n\n1. **Income >50K is strongly associated with higher education and professional occupations** – the rows with Bachelors, Masters, or Prof‑specialty/Exec‑managerial jobs tend to be >50K, while the bulk of HS‑grad or some‑college rows are ≤50K.  \n\n2. **Age and hours‑per‑week** show moderate influence: people over 40 and working >40\u202fh/wk appear more often in the >50K class.  \n\n3. **Gender and race**: Males (≈66% of the sample) contain a larger share of the >50K cases; White individuals dominate both classes, but the >50K rate is higher among Whites than among other races.  \n\n4. **Capital‑gain** is a decisive signal – any non‑zero capital‑gain (e.g., 14\u202f344 in the sample) almost always coincides with >50K.  \n\n5. **Overall class distribution** in this 1\u202f000‑row subset is 769 ≤50K and 231 >50K, giving a base probability of 0.231 for the positive class.\n\nCombining these observations, the most reliable single‑value summary of the target is its empirical probability of being >50K, i.e.,\u202f≈23\u202f% of the population.\n\n**Prediction**\n\nPREDICTION: 0.231')
+2026-03-25 19:15:18,526 | INFO | LLM predictions: [0.231, 0.231, 0.231]
+2026-03-25 19:15:18,527 | INFO | LLM predictions: [0.231, 0.231, 0.231]
+2026-03-25 19:15:18,629 | INFO | LLMPrior initialized: λ_init=0.50, llm_avg=0.2310, prior_0=[0.7979999780654907, 0.20200000703334808]
+2026-03-25 19:15:18,630 | INFO | Training for 20 epochs with lr=0.001...
+2026-03-25 19:15:19,678 | INFO | LLMPrior step 1: λ=0.5000, prior=[0.5145000219345093, 0.21650001406669617]
+2026-03-25 19:15:20,558 | INFO | LLMPrior step 2: λ=0.5000, prior=[0.37275001406669617, 0.2237500101327896]
+2026-03-25 19:15:21,392 | INFO | LLMPrior step 3: λ=0.5000, prior=[0.3018749952316284, 0.22737500071525574]
+2026-03-25 19:15:22,203 | INFO | LLMPrior step 4: λ=0.5000, prior=[0.26643750071525574, 0.2291875034570694]
+2026-03-25 19:15:23,045 | INFO | LLMPrior step 5: λ=0.5000, prior=[0.2487187534570694, 0.23009374737739563]
+2026-03-25 19:15:23,879 | INFO | LLMPrior step 6: λ=0.5000, prior=[0.23985937237739563, 0.23054687678813934]
+2026-03-25 19:15:24,680 | INFO | LLMPrior step 7: λ=0.5000, prior=[0.23542968928813934, 0.2307734489440918]
+2026-03-25 19:15:25,477 | INFO | LLMPrior step 8: λ=0.5000, prior=[0.2332148551940918, 0.23088672757148743]
+2026-03-25 19:15:26,275 | INFO | LLMPrior step 9: λ=0.5000, prior=[0.23210743069648743, 0.23094336688518524]
+2026-03-25 19:15:27,063 | INFO | LLMPrior step 10: λ=0.5000, prior=[0.23155371844768524, 0.23097169399261475]
+2026-03-25 19:15:27,831 | INFO | LLMPrior step 11: λ=0.5000, prior=[0.23127686977386475, 0.2309858500957489]
+2026-03-25 19:15:28,616 | INFO | LLMPrior step 12: λ=0.5000, prior=[0.2311384379863739, 0.23099292814731598]
+2026-03-25 19:15:29,401 | INFO | LLMPrior step 13: λ=0.5000, prior=[0.23106922209262848, 0.23099645972251892]
+2026-03-25 19:15:30,179 | INFO | LLMPrior step 14: λ=0.5000, prior=[0.23103460669517517, 0.230998232960701]
+2026-03-25 19:15:31,006 | INFO | LLMPrior step 15: λ=0.5000, prior=[0.2310173064470291, 0.23099911212921143]
+2026-03-25 19:15:31,824 | INFO | LLMPrior step 16: λ=0.5000, prior=[0.2310086488723755, 0.23099955916404724]
+2026-03-25 19:15:32,634 | INFO | LLMPrior step 17: λ=0.5000, prior=[0.23100432753562927, 0.23099978268146515]
+2026-03-25 19:15:33,450 | INFO | LLMPrior step 18: λ=0.5000, prior=[0.23100216686725616, 0.2309998869895935]
+2026-03-25 19:15:34,271 | INFO | LLMPrior step 19: λ=0.5000, prior=[0.231001079082489, 0.23099994659423828]
+2026-03-25 19:15:35,095 | INFO | LLMPrior step 20: λ=0.5000, prior=[0.23100054264068604, 0.23099997639656067]
+2026-03-25 19:15:35,096 | INFO | 
+2026-03-25 19:15:35,096 | INFO | ============================================================
+2026-03-25 19:15:35,098 | INFO | Training Log (per epoch)
+2026-03-25 19:15:35,098 | INFO | ============================================================
+2026-03-25 19:15:35,098 | INFO | Epoch    Train Loss      Valid Loss      accuracy       
+2026-03-25 19:15:35,098 | INFO | -----------------------------------------------------
+2026-03-25 19:15:35,098 | INFO | 0        79.181519       74.132248       0.805000       
+2026-03-25 19:15:35,098 | INFO | 1        76.513832       69.649971       0.810000       
+2026-03-25 19:15:35,099 | INFO | 2        102.269066      134.135712      0.785000       
+2026-03-25 19:15:35,099 | INFO | 3        115.732201      109.249908      0.800000       
+2026-03-25 19:15:35,099 | INFO | 4        124.648209      219.799515      0.740000       
+2026-03-25 19:15:35,099 | INFO | 5        242.541153      228.227676      0.740000       
+2026-03-25 19:15:35,099 | INFO | 6        304.053619      218.458374      0.770000       
+2026-03-25 19:15:35,099 | INFO | 7        303.253418      209.825699      0.775000       
+2026-03-25 19:15:35,099 | INFO | 8        289.298218      201.222321      0.780000       
+2026-03-25 19:15:35,101 | INFO | 9        303.729523      191.704727      0.780000       
+2026-03-25 19:15:35,101 | INFO | 10       292.368500      185.657135      0.790000       
+2026-03-25 19:15:35,101 | INFO | 11       282.564301      180.848206      0.790000       
+2026-03-25 19:15:35,101 | INFO | 12       265.464783      177.566010      0.790000       
+2026-03-25 19:15:35,101 | INFO | 13       256.755005      175.013611      0.795000       
+2026-03-25 19:15:35,101 | INFO | 14       242.605743      173.278091      0.795000       
+2026-03-25 19:15:35,101 | INFO | 15       236.694107      172.044861      0.795000       
+2026-03-25 19:15:35,101 | INFO | 16       223.688660      171.371445      0.795000       
+2026-03-25 19:15:35,101 | INFO | 17       218.397049      171.092285      0.795000       
+2026-03-25 19:15:35,102 | INFO | 18       213.987671      171.018631      0.795000       
+2026-03-25 19:15:35,102 | INFO | 19       207.930237      171.034042      0.795000       
+2026-03-25 19:15:35,102 | INFO | 
+LLMPrior final λ (learned): 0.5000
+2026-03-25 19:15:35,102 | INFO | 
+2026-03-25 19:15:35,102 | INFO | ----------------------------------------
+2026-03-25 19:15:35,102 | INFO | Sample predictions (first 5 validation rows):
+2026-03-25 19:15:35,102 | INFO | ----------------------------------------
+2026-03-25 19:15:35,152 | INFO | LLMPrior step 21: λ=0.5000, prior=[0.23100027441978455, 0.23099999129772186]
+2026-03-25 19:15:35,153 | INFO |   [1] Predicted: class 1 | Actual: >50K
+2026-03-25 19:15:35,153 | INFO |   [2] Predicted: class 0 | Actual: <=50K
+2026-03-25 19:15:35,153 | INFO |   [3] Predicted: class 0 | Actual: <=50K
+2026-03-25 19:15:35,154 | INFO |   [4] Predicted: class 1 | Actual: >50K
+2026-03-25 19:15:35,154 | INFO |   [5] Predicted: class 0 | Actual: >50K
+2026-03-25 19:15:35,154 | INFO | 
+2026-03-25 19:15:35,154 | INFO | ----------------------------------------
+2026-03-25 19:15:35,155 | INFO | Feature Importance:
+2026-03-25 19:15:35,155 | INFO | ----------------------------------------
+2026-03-25 19:15:35,160 | INFO | 
+      Variable  Importance
+hours-per-week    0.003623
+  capital-gain    0.003414
+           age    0.003118
+     workclass    0.002918
+          race    0.002752
+  capital-loss    0.002309
+native-country    0.001959
+           sex    0.001782
+        fnlwgt    0.001503
+     education    0.001501
+ education-num    0.001484
+  relationship    0.001458
+marital-status    0.001380
+    occupation    0.001125
+2026-03-25 19:15:35,581 | INFO | Plot saved to feature_importance.png
+2026-03-25 19:15:35,581 | INFO | 
+2026-03-25 19:15:35,581 | INFO | ============================================================
+2026-03-25 19:15:35,581 | INFO | Done! Log saved to: logs\run_20260325_191507_ds1590_ProductOfSumsKernel_LLMPrior.log
+2026-03-25 19:15:35,581 | INFO | ============================================================
