@@ -1,0 +1,149 @@
+======================================================================
+  PRIOR BENCHMARK (Classification — Accuracy)
+  ZeroPrior vs ConstantPrior vs LinearPrior vs LLMPrior
+======================================================================
+  Loaded Credit-G: (1000, 21), target='class', classes=2
+
+======================================================================
+  DATASET: Credit-G (#31, n=1000)
+  Samples: 1000 | Classes: 2 | Cat: 17, Cont: 3
+  3 random splits × 4 priors × 15 epochs
+======================================================================
+
+  --- Split 1/3 (seed=42) ---
+█    ZeroPrior        Accuracy=0.7300  Time=14.6s
+█    ConstantPrior    Accuracy=0.6750  Time=15.3s
+█    LinearPrior      Accuracy=0.6950  Time=17.0s
+█    LLMPrior         Accuracy=0.7000  Time=17.1s
+
+  --- Split 2/3 (seed=43) ---
+█    ZeroPrior        Accuracy=0.6800  Time=16.7s
+█    ConstantPrior    Accuracy=0.6550  Time=18.0s
+█    LinearPrior      Accuracy=0.6650  Time=18.6s
+█    LLMPrior         Accuracy=0.6700  Time=18.7s
+
+  --- Split 3/3 (seed=44) ---
+█    ZeroPrior        Accuracy=0.6950  Time=21.6s
+█    ConstantPrior    Accuracy=0.6600  Time=19.5s
+█    LinearPrior      Accuracy=0.6700  Time=21.4s
+█    LLMPrior         Accuracy=0.6300  Time=20.7s
+
+  ────────────────────────────────────────────────────────────
+  Results for: Credit-G (#31, n=1000)
+  ────────────────────────────────────────────────────────────
+  Prior            Accuracy (mean±std)     Time (mean)   vs Best   
+  ───────────────  ──────────────────────  ────────────  ──────────
+  ZeroPrior        0.7017 ± 0.0209          17.6s      ★ BEST
+  ConstantPrior    0.6633 ± 0.0085          17.6s     -5.5%
+  LinearPrior      0.6767 ± 0.0131          19.0s     -3.6%
+  LLMPrior         0.6667 ± 0.0287          18.8s     -5.0%
+  Loaded Iris: (150, 5), target='class', classes=3
+
+======================================================================
+  DATASET: Iris (#61, n=150)
+  Samples: 150 | Classes: 3 | Cat: 0, Cont: 4
+  3 random splits × 4 priors × 15 epochs
+======================================================================
+
+  --- Split 1/3 (seed=42) ---
+█    ZeroPrior        Accuracy=0.9333  Time=0.2s
+█    ConstantPrior    Accuracy=0.9333  Time=0.2s
+█    LinearPrior      Accuracy=0.9333  Time=0.2s
+█    LLMPrior         Accuracy=0.9333  Time=0.3s
+
+  --- Split 2/3 (seed=43) ---
+█    ZeroPrior        Accuracy=0.8667  Time=0.2s
+█    ConstantPrior    Accuracy=0.8667  Time=0.2s
+█    LinearPrior      Accuracy=0.8667  Time=0.2s
+█    LLMPrior         Accuracy=0.8667  Time=0.2s
+
+  --- Split 3/3 (seed=44) ---
+█    ZeroPrior        Accuracy=0.8667  Time=0.2s
+█    ConstantPrior    Accuracy=0.8000  Time=0.3s
+█    LinearPrior      Accuracy=0.8667  Time=0.2s
+█    LLMPrior         Accuracy=0.8667  Time=0.2s
+
+  ────────────────────────────────────────────────────────────
+  Results for: Iris (#61, n=150)
+  ────────────────────────────────────────────────────────────
+  Prior            Accuracy (mean±std)     Time (mean)   vs Best   
+  ───────────────  ──────────────────────  ────────────  ──────────
+  ZeroPrior        0.8889 ± 0.0314           0.2s      ★ BEST
+  ConstantPrior    0.8667 ± 0.0544           0.2s     -2.5%
+  LinearPrior      0.8889 ± 0.0314           0.2s      ★ BEST
+  LLMPrior         0.8889 ± 0.0314           0.2s      ★ BEST
+  Loaded Vehicle: (846, 19), target='Class', classes=4
+
+======================================================================
+  DATASET: Vehicle (#54, n=846)
+  Samples: 846 | Classes: 4 | Cat: 1, Cont: 17
+  3 random splits × 4 priors × 15 epochs
+======================================================================
+
+  --- Split 1/3 (seed=42) ---
+█    ZeroPrior        Accuracy=0.5588  Time=6.5s
+█    ConstantPrior    Accuracy=0.5824  Time=7.9s
+█    LinearPrior      Accuracy=0.5706  Time=8.7s
+█    LLMPrior         Accuracy=0.5412  Time=8.7s
+
+  --- Split 2/3 (seed=43) ---
+█    ZeroPrior        Accuracy=0.3353  Time=8.5s
+█    ConstantPrior    Accuracy=0.6471  Time=9.7s
+█    LinearPrior      Accuracy=0.3647  Time=9.5s
+█    LLMPrior         Accuracy=0.6529  Time=9.8s
+
+  --- Split 3/3 (seed=44) ---
+█    ZeroPrior        Accuracy=0.5706  Time=9.5s
+█    ConstantPrior    Accuracy=0.5824  Time=9.1s
+█    LinearPrior      Accuracy=0.5529  Time=9.4s
+█    LLMPrior         Accuracy=0.5882  Time=9.0s
+
+  ────────────────────────────────────────────────────────────
+  Results for: Vehicle (#54, n=846)
+  ────────────────────────────────────────────────────────────
+  Prior            Accuracy (mean±std)     Time (mean)   vs Best   
+  ───────────────  ──────────────────────  ────────────  ──────────
+  ZeroPrior        0.4882 ± 0.1083           8.2s     -19.2%
+  ConstantPrior    0.6039 ± 0.0305           8.9s      ★ BEST
+  LinearPrior      0.4961 ± 0.0932           9.2s     -17.9%
+  LLMPrior         0.5941 ± 0.0458           9.2s     -1.6%
+
+
+======================================================================
+  GRAND SUMMARY — All Datasets × All Priors (Accuracy)
+======================================================================
+
+  [Credit-G (#31, n=1000)]
+    ZeroPrior        Acc=0.7017 ± 0.0209  Time=17.6s ★
+    ConstantPrior    Acc=0.6633 ± 0.0085  Time=17.6s
+    LinearPrior      Acc=0.6767 ± 0.0131  Time=19.0s
+    LLMPrior         Acc=0.6667 ± 0.0287  Time=18.8s
+
+  [Iris (#61, n=150)]
+    ZeroPrior        Acc=0.8889 ± 0.0314  Time=0.2s ★
+    ConstantPrior    Acc=0.8667 ± 0.0544  Time=0.2s
+    LinearPrior      Acc=0.8889 ± 0.0314  Time=0.2s
+    LLMPrior         Acc=0.8889 ± 0.0314  Time=0.2s
+
+  [Vehicle (#54, n=846)]
+    ZeroPrior        Acc=0.4882 ± 0.1083  Time=8.2s
+    ConstantPrior    Acc=0.6039 ± 0.0305  Time=8.9s ★
+    LinearPrior      Acc=0.4961 ± 0.0932  Time=9.2s
+    LLMPrior         Acc=0.5941 ± 0.0458  Time=9.2s
+
+  ──────────────────────────────────────────────────
+  Overall wins across 3 datasets:
+    ZeroPrior        2 win(s)  ██
+    ConstantPrior    1 win(s)  █
+    LinearPrior      0 win(s)  
+    LLMPrior         0 win(s)  
+
+  Average Accuracy across all datasets:
+    LLMPrior         avg Accuracy = 0.7166
+    ConstantPrior    avg Accuracy = 0.7113
+    ZeroPrior        avg Accuracy = 0.6929
+    LinearPrior      avg Accuracy = 0.6872
+
+======================================================================
+  Benchmark complete. Results saved to prior_benchmark_results.txt
+======================================================================

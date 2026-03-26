@@ -76,14 +76,19 @@ class LLMPrior(Prior):
 
     Formula: prior = λ * llm_avg + (1-λ) * mean
 
-    Lambda (λ) is an nn.Parameter, updated by gradient descent each batch.
+    Lambda (λ) can be trainable (nn.Parameter) or fixed (buffer).
     """
     def __init__(self, train_input_cat:Tensor, train_input_cont:Tensor, train_outputs:Tensor,
-                 embedding_sizes, llm_predictions=None, lam=0.5):
+                 embedding_sizes, llm_predictions=None, lam=0.5, trainable_lambda=True):
         super().__init__(train_input_cat, train_input_cont, train_outputs, embedding_sizes)
 
-        # Trainable lambda (clamped to [0, 1] via sigmoid)
-        self.raw_lambda = nn.Parameter(torch.tensor(float(lam)).logit())
+        self._trainable_lambda = trainable_lambda
+
+        # Lambda: trainable via sigmoid or fixed buffer
+        if trainable_lambda:
+            self.raw_lambda = nn.Parameter(torch.tensor(float(lam)).logit())
+        else:
+            self.register_buffer('_fixed_lambda', torch.tensor(float(lam)))
 
         # Mean of training outputs (fixed)
         mean_val = train_outputs.mean(dim=0)
@@ -97,12 +102,15 @@ class LLMPrior(Prior):
             llm_avg = mean_val[0].item() if mean_val.dim() > 0 else mean_val.item()
         self.register_buffer('llm_avg', torch.tensor([llm_avg]))
 
-        _logger.info(f"LLMPrior initialized: λ_init={lam:.2f}, "
+        mode = "trainable" if trainable_lambda else "fixed"
+        _logger.info(f"LLMPrior initialized: λ_init={lam:.2f} ({mode}), "
                      f"llm_avg={llm_avg:.4f}, mean={mean_val.tolist()}")
 
     @property
     def lam(self):
-        return torch.sigmoid(self.raw_lambda)
+        if self._trainable_lambda:
+            return torch.sigmoid(self.raw_lambda)
+        return self._fixed_lambda
 
     def forward(self, x_cat: Tensor, x_cont: Tensor):
         lam = self.lam

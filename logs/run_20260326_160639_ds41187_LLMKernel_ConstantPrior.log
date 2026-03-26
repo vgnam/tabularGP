@@ -1,0 +1,64 @@
+2026-03-26 16:06:39,722 | INFO | ============================================================
+2026-03-26 16:06:39,723 | INFO | TabularGP | Problem: regression | Kernel: LLMKernel | Prior: ConstantPrior
+2026-03-26 16:06:39,723 | INFO | Config: epochs=5, lr=0.001, noise=0.01, nb_training_points=500
+2026-03-26 16:06:39,724 | INFO | Dataset ID: 41187 | n_samples: 5000
+2026-03-26 16:06:39,724 | INFO | Log file: logs\run_20260326_160639_ds41187_LLMKernel_ConstantPrior.log
+2026-03-26 16:06:39,724 | INFO | ============================================================
+2026-03-26 16:06:39,739 | INFO | Categorical features (4): ['month', 'weight', 'flag', 'station']
+2026-03-26 16:06:39,739 | INFO | Continuous features  (2): ['year', 'day']
+2026-03-26 16:06:39,741 | INFO | Dataset shape: (2225, 7)
+2026-03-26 16:06:42,811 | INFO | Querying LLMs for kernel feature weights...
+2026-03-26 16:06:42,825 | INFO | Querying 3 LLMs for kernel feature weights...
+2026-03-26 16:06:42,841 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-26 16:06:46,591 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-26 16:06:46,603 | INFO |   nvidia_nim/openai/gpt-oss-120b (statistical): [0.6, 0.2, 0.0, 0.0, 0.9, 0.3]
+2026-03-26 16:06:46,605 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-26 16:06:48,546 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-26 16:06:48,547 | INFO |   nvidia_nim/openai/gpt-oss-120b (domain_expert): [0.5, 0.05, 0.0, 0.0, 0.9, 0.2]
+2026-03-26 16:06:48,548 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-26 16:06:49,595 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-26 16:06:49,596 | INFO |   nvidia_nim/openai/gpt-oss-120b (pattern_matching): [0.6, 0.2, 0.0, 0.0, 0.9, 0.1]
+2026-03-26 16:06:49,596 | INFO |   Averaged kernel weights: ['0.567', '0.150', '0.000', '0.000', '0.900', '0.200']
+2026-03-26 16:06:49,596 | INFO | LLM kernel feature weights: [0.5666666666666668, 0.15, 0.0, 0.0, 0.9, 0.19999999999999998]
+2026-03-26 16:06:49,666 | INFO | LLMKernel: λ=0.70 (fixed), cat_weights=[0.5666666626930237, 0.15000000596046448, 0.0, 0.0], cont_weights=[0.8999999761581421, 0.20000000298023224]
+2026-03-26 16:06:49,667 | INFO | Training for 5 epochs with lr=0.001...
+2026-03-26 16:06:58,627 | INFO | 
+2026-03-26 16:06:58,628 | INFO | ============================================================
+2026-03-26 16:06:58,628 | INFO | Training Log (per epoch)
+2026-03-26 16:06:58,629 | INFO | ============================================================
+2026-03-26 16:06:58,629 | INFO | Epoch    Train Loss      Valid Loss      rmse           
+2026-03-26 16:06:58,629 | INFO | -----------------------------------------------------
+2026-03-26 16:06:58,630 | INFO | 0        2.464819        2.122221        1.399080       
+2026-03-26 16:06:58,630 | INFO | 1        2.338321        2.069686        0.754736       
+2026-03-26 16:06:58,631 | INFO | 2        2.184699        2.039479        0.751034       
+2026-03-26 16:06:58,631 | INFO | 3        2.115332        1.952521        0.755899       
+2026-03-26 16:06:58,632 | INFO | 4        2.018039        1.909953        0.755434       
+2026-03-26 16:06:58,632 | INFO | 
+2026-03-26 16:06:58,632 | INFO | ----------------------------------------
+2026-03-26 16:06:58,633 | INFO | Sample predictions (first 5 validation rows):
+2026-03-26 16:06:58,633 | INFO | ----------------------------------------
+2026-03-26 16:06:58,757 | INFO |   [1] Predicted: 321.9597 | Actual: 322.1
+2026-03-26 16:06:58,758 | INFO |   [2] Predicted: 321.8250 | Actual: 322.2
+2026-03-26 16:06:58,758 | INFO |   [3] Predicted: 320.3304 | Actual: 320.9
+2026-03-26 16:06:58,759 | INFO |   [4] Predicted: 329.9980 | Actual: 329.0
+2026-03-26 16:06:58,760 | INFO |   [5] Predicted: 316.3026 | Actual: 315.8
+2026-03-26 16:06:58,760 | INFO | 
+2026-03-26 16:06:58,761 | INFO | ----------------------------------------
+2026-03-26 16:06:58,761 | INFO | Feature Importance:
+2026-03-26 16:06:58,761 | INFO | ----------------------------------------
+2026-03-26 16:06:58,766 | INFO | 
+Variable  Importance
+    year    1.009158
+   month    0.810466
+     day    0.799158
+  weight    0.684058
+ station    0.626518
+    flag    0.626463
+2026-03-26 16:06:59,393 | INFO | Plot saved to feature_importance.png
+2026-03-26 16:06:59,394 | INFO | 
+2026-03-26 16:06:59,394 | INFO | ============================================================
+2026-03-26 16:06:59,394 | INFO | Done! Log saved to: logs\run_20260326_160639_ds41187_LLMKernel_ConstantPrior.log
+2026-03-26 16:06:59,395 | INFO | ============================================================

@@ -13,7 +13,7 @@ from pathlib import Path
 from sklearn.datasets import fetch_openml
 from fastai.tabular.all import *
 from tabularGP import tabularGP_learner
-from tabularGP.kernel import ProductOfSumsKernel, WeightedSumKernel, WeightedProductKernel, NeuralKernel
+from tabularGP.kernel import ProductOfSumsKernel, WeightedSumKernel, WeightedProductKernel, NeuralKernel, LLMKernel
 from tabularGP.prior import ConstantPrior, ZeroPrior, LinearPrior, LLMPrior
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = ""  # Không sử dụng GPU
@@ -57,6 +57,7 @@ KERNELS = {
     "WeightedSumKernel": WeightedSumKernel,
     "WeightedProductKernel": WeightedProductKernel,
     "NeuralKernel": NeuralKernel,
+    "LLMKernel": LLMKernel,
 }
 
 PRIORS = {
@@ -77,7 +78,13 @@ def load_openml_dataset(dataset_id, target=None, n_samples=None):
 
     # Determine target column
     if target is None:
-        target = data.target_names[0] if isinstance(data.target_names, list) else data.target_names
+        if isinstance(data.target_names, list) and len(data.target_names) > 0:
+            target = data.target_names[0]
+        elif isinstance(data.target_names, str) and data.target_names:
+            target = data.target_names
+        else:
+            # Fallback: use the last column
+            target = df.columns[-1]
     print(f"Target column: '{target}'")
 
     # Get dataset description from OpenML
@@ -132,7 +139,20 @@ def main():
     noise = cfg.get("noise", 0.01)
     plot_fi = cfg.get("plot_feature_importance", False)
 
-    kernel = KERNELS[kernel_name]
+    # Kernel setup (LLMKernel handled later after data is loaded)
+    kernel_extra = None
+    if kernel_name == "LLMKernel":
+        llm_k_cfg = cfg.get("llm_kernel", {})
+        base_kernel_name = llm_k_cfg.get("base_kernel", "WeightedSumKernel")
+        kernel_extra = {
+            "base_kernel": KERNELS[base_kernel_name],
+            "lam": llm_k_cfg.get("lambda", 0.5),
+            "trainable_lambda": llm_k_cfg.get("trainable_lambda", True),
+        }
+        kernel = None  # Will be created after LLM query
+    else:
+        kernel = KERNELS[kernel_name]
+
     prior_cls = PRIORS[prior_name]
 
     # For LLMPrior, we need to create a factory that passes extra config
@@ -141,10 +161,12 @@ def main():
         llm_lambda = llm_cfg.get("lambda", 0.5)
         llm_description = llm_cfg.get("dataset_description", "")
         llm_models = llm_cfg.get("models", [])
+        llm_trainable = llm_cfg.get("trainable_lambda", True)
         # Will be set after we know feature names and problem type
         prior_extra = {
             "llm_configs": llm_models,
             "lam": llm_lambda,
+            "trainable_lambda": llm_trainable,
             "dataset_description": llm_description,
         }
     else:
@@ -222,12 +244,48 @@ def main():
         log.info(f"LLM predictions: {llm_predictions}")
 
         llm_lam = prior_extra["lam"]
+        llm_trainable = prior_extra["trainable_lambda"]
         # Create a factory that passes pre-queried predictions
         class _LLMPriorFactory:
             def __call__(self, train_cat, train_cont, train_out, emb_szs):
                 return LLMPrior(train_cat, train_cont, train_out, emb_szs,
-                                llm_predictions=llm_predictions, lam=llm_lam)
+                                llm_predictions=llm_predictions, lam=llm_lam,
+                                trainable_lambda=llm_trainable)
         prior = _LLMPriorFactory()
+
+    # For LLMKernel, query LLMs for feature weights and create kernel instance
+    if kernel_extra is not None:
+        from tabularGP.llm_utils import llm_kernel_weights
+        from tabularGP.kernel import LLMKernel
+
+        log.info("Querying LLMs for kernel feature weights...")
+        llm_k_configs = cfg.get("llm_prior", {}).get("models", [])
+        if not llm_k_configs:
+            llm_k_configs = [{"model": "nvidia_nim/openai/gpt-oss-120b", "strategy": "statistical"}]
+        feature_weights = llm_kernel_weights(
+            llm_configs=llm_k_configs,
+            df=df,
+            feature_names=cat_names + cont_names,
+            target_name=target,
+            dataset_description=dataset_description,
+            problem_type=problem,
+        )
+        log.info(f"LLM kernel feature weights: {feature_weights}")
+
+        # Pass as a callable factory (TabularGPModel checks isinstance(kernel, type))
+        _ke = kernel_extra
+        _fw = feature_weights
+        # Create a dynamic class so isinstance(kernel, type) is True
+        class _LLMKernelConfigured(LLMKernel):
+            def __init__(self, train_cat, train_cont, embedding_sizes, **kwargs):
+                super().__init__(
+                    train_cat, train_cont, embedding_sizes,
+                    feature_weights=_fw,
+                    base_kernel=_ke["base_kernel"],
+                    lam=_ke["lam"],
+                    trainable_lambda=_ke["trainable_lambda"],
+                )
+        kernel = _LLMKernelConfigured
 
     learn = tabularGP_learner(
         data,

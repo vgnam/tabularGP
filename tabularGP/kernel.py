@@ -16,7 +16,7 @@ from tabularGP.universalCombinator import PositiveMultiply, PositiveProductOfSum
 __all__ = ['CategorialKernel', 'ContinuousKernel', 'TabularKernel',
            'IndexKernelSingle', 'IndexKernel', 'HammingKernel',
            'GaussianKernel', 'ExponentialKernel', 'Matern1Kernel', 'Matern2Kernel', 'RBFKernel', 'MaternInfinityKernel', 'Matern0Kernel',
-           'WeightedSumKernel', 'WeightedProductKernel', 'ProductOfSumsKernel', 'NeuralKernel']
+           'WeightedSumKernel', 'WeightedProductKernel', 'ProductOfSumsKernel', 'NeuralKernel', 'LLMKernel']
 
 #--------------------------------------------------------------------------------------------------
 # abstract classes
@@ -326,3 +326,135 @@ class NeuralKernel(TabularKernel):
         x = x.unsqueeze(1).expand(nb_x_elements, nb_y_elements, element_size)
         y = y.unsqueeze(0).expand(nb_x_elements, nb_y_elements, element_size)
         return self.kernel(x,y)
+
+#--------------------------------------------------------------------------------------------------
+# LLM hybrid kernel
+
+import logging
+_kernel_logger = logging.getLogger(__name__)
+
+class LLMKernel(TabularKernel):
+    """
+    Hybrid kernel: k(x,x*) = λ * k_trad(x,x*) + (1-λ) * k_LLM(x,x*)
+
+    k_LLM is a weighted-RBF kernel where feature weights come from LLM analysis.
+    λ is trainable (via sigmoid) or fixed, same pattern as LLMPrior.
+
+    When λ→1, degenerates to pure traditional kernel (worst case = traditional).
+    """
+    def __init__(self, train_cat, train_cont, embedding_sizes,
+                 feature_weights=None, base_kernel=WeightedSumKernel,
+                 lam=0.5, trainable_lambda=True):
+        super().__init__(train_cat, train_cont, embedding_sizes)
+
+        # Traditional kernel
+        self.base = base_kernel(train_cat, train_cont, embedding_sizes)
+
+        # Trainable or fixed lambda
+        self._trainable_lambda = trainable_lambda
+        if trainable_lambda:
+            self.raw_lambda = nn.Parameter(torch.tensor(float(lam)).logit())
+        else:
+            self.register_buffer('_fixed_lambda', torch.tensor(float(lam)))
+
+        # LLM feature weights (fixed)
+        nb_cat = train_cat.size(1) if train_cat.dim() > 1 else 0
+        nb_cont = train_cont.size(1) if train_cont.dim() > 1 else 0
+        nb_features = nb_cat + nb_cont
+
+        if feature_weights is None:
+            feature_weights = [0.5] * nb_features
+        # Ensure correct length
+        fw = list(feature_weights)
+        while len(fw) < nb_features:
+            fw.append(0.5)
+        fw = fw[:nb_features]
+
+        # Split weights: first nb_cat for categorical, rest for continuous
+        cat_weights = torch.tensor(fw[:nb_cat], dtype=torch.float32)
+        cont_weights = torch.tensor(fw[nb_cat:], dtype=torch.float32)
+        self.register_buffer('cat_weights', cat_weights)
+        self.register_buffer('cont_weights', cont_weights)
+
+        # Bandwidth for LLM kernel (Silverman's rule, fixed)
+        if nb_cont > 0:
+            bandwidth = 0.9 * train_cont.std(dim=0) * (train_cont.size(0) ** -0.2)
+            self.register_buffer('bandwidth', bandwidth)
+
+        self.nb_cat = nb_cat
+        self.nb_cont = nb_cont
+
+        mode = "trainable" if trainable_lambda else "fixed"
+        _kernel_logger.info(
+            f"LLMKernel: λ={lam:.2f} ({mode}), "
+            f"cat_weights={cat_weights.tolist()}, cont_weights={cont_weights.tolist()}"
+        )
+
+    @property
+    def lam(self):
+        if self._trainable_lambda:
+            return torch.sigmoid(self.raw_lambda)
+        return self._fixed_lambda
+
+    def _llm_kernel(self, x, y):
+        """LLM-informed kernel: weighted RBF (cont) + weighted Hamming (cat)."""
+        x_cat, x_cont = x
+        y_cat, y_cont = y
+
+        covariance = torch.zeros(x_cont.shape[:-1] if x_cont.dim() > 1 else x_cat.shape[:-1]).to(
+            x_cont.device if x_cont.numel() > 0 else x_cat.device
+        )
+
+        # Continuous: weighted Gaussian kernel
+        if self.nb_cont > 0 and x_cont.numel() > 0:
+            diff_sq = (x_cont - y_cont) ** 2 / (2 * self.bandwidth * self.bandwidth)
+            weighted = self.cont_weights * diff_sq
+            covariance = covariance + torch.exp(-weighted.sum(dim=-1))
+
+        # Categorical: weighted Hamming similarity
+        if self.nb_cat > 0 and x_cat.numel() > 0:
+            match = (x_cat == y_cat).float()  # 1 where equal, 0 otherwise
+            weighted_match = (match * self.cat_weights).sum(dim=-1)
+            # Normalize by sum of weights (so result is in [0, 1])
+            weight_sum = self.cat_weights.sum()
+            if weight_sum > 0:
+                weighted_match = weighted_match / weight_sum
+            covariance = covariance + weighted_match
+
+        return covariance
+
+    def forward(self, x, y):
+        lam = self.lam
+        k_trad = self.base(x, y)
+        k_llm = self._llm_kernel(x, y)
+        return lam * k_trad + (1 - lam) * k_llm
+
+    def matrix(self, x, y):
+        lam = self.lam
+        k_trad_mat = self.base.matrix(x, y)
+
+        # Build LLM kernel matrix manually
+        x_cat, x_cont = x
+        y_cat, y_cont = y
+        nb_x = x_cat.size(0)
+        nb_y = y_cat.size(0)
+
+        cat_sz = x_cat.size(1) if x_cat.dim() > 1 else 0
+        cont_sz = x_cont.size(1) if x_cont.dim() > 1 else 0
+
+        xc_exp = x_cat.unsqueeze(1).expand(nb_x, nb_y, cat_sz)
+        yc_exp = y_cat.unsqueeze(0).expand(nb_x, nb_y, cat_sz)
+        xn_exp = x_cont.unsqueeze(1).expand(nb_x, nb_y, cont_sz)
+        yn_exp = y_cont.unsqueeze(0).expand(nb_x, nb_y, cont_sz)
+
+        k_llm_mat = self._llm_kernel((xc_exp, xn_exp), (yc_exp, yn_exp))
+
+        return lam * k_trad_mat + (1 - lam) * k_llm_mat
+
+    @property
+    def feature_importance(self):
+        # Combine base kernel importance with LLM weights
+        base_imp = self.base.feature_importance
+        llm_imp = torch.cat([self.cat_weights, self.cont_weights])
+        lam = self.lam.item() if hasattr(self.lam, 'item') else self.lam
+        return lam * base_imp + (1 - lam) * llm_imp

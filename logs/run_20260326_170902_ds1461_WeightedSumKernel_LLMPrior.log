@@ -1,0 +1,76 @@
+2026-03-26 17:09:02,864 | INFO | ============================================================
+2026-03-26 17:09:02,864 | INFO | TabularGP | Problem: classification | Kernel: WeightedSumKernel | Prior: LLMPrior
+2026-03-26 17:09:02,864 | INFO | Config: epochs=5, lr=0.001, noise=0.01, nb_training_points=500
+2026-03-26 17:09:02,864 | INFO | Dataset ID: 1461 | n_samples: 10000
+2026-03-26 17:09:02,864 | INFO | Log file: logs\run_20260326_170902_ds1461_WeightedSumKernel_LLMPrior.log
+2026-03-26 17:09:02,865 | INFO | ============================================================
+2026-03-26 17:09:12,306 | INFO | Categorical features (9): ['V2', 'V3', 'V4', 'V5', 'V7', 'V8', 'V9', 'V11', 'V16']
+2026-03-26 17:09:12,306 | INFO | Continuous features  (7): ['V1', 'V6', 'V10', 'V12', 'V13', 'V14', 'V15']
+2026-03-26 17:09:12,307 | INFO | Dataset shape: (10000, 17)
+2026-03-26 17:09:15,653 | INFO | Querying LLMs with dataset summary...
+2026-03-26 17:09:15,654 | INFO | Querying 3 LLMs with dataset summary (10000 samples, 10 few-shot rows each, different per strategy)...
+2026-03-26 17:09:15,693 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-26 17:09:19,616 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-26 17:09:19,628 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 1.121 (raw: 'The target variable “Class” is binary (values 1 and 2). The summary gives its overall mean\u202f=\u202f1.121, which directly reflects the expected value across the whole sample (i.e.,\u202fE[Class]\u202f=\u202f1\u202f×\u202fP(Class\u202f=\u202f1)\u202f+\u202f2\u202f×\u202fP(Class\u202f=\u202f2)\u202f=\u202f1.121). Using this mean as the best unbiased point estimate for a new observation yields the predicted overall expected value.\n\nPREDICTION: 1.121')
+2026-03-26 17:09:19,655 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-26 17:09:21,480 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-26 17:09:21,482 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 1.121 (raw: 'The target “Class” is a binary indicator (1\u202f=\u202fno subscription, 2\u202f=\u202fyes subscription). In this marketing campaign the vast majority of contacts do **not** subscribe, which is reflected in the summary statistics: the mean of the class column is 1.121 with a small standard deviation (0.326). Because the overall expected value of a binary variable equals the probability of the positive class plus 1 (i.e.,\u202fE[Class]\u202f=\u202f1\u202f+\u202fP(Class\u202f=\u202f2)), the mean directly gives the expected value. No additional feature information changes the global average; it is already captured in the provided summary.\n\n**PREDICTION: 1.121**')
+2026-03-26 17:09:21,511 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-26 17:09:24,118 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-26 17:09:24,119 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 1.121 (raw: 'The data shows a strongly imbalanced target: the mean of\u202fClass\u202fis\u202f1.121, implying roughly\u202f12\u202f% of instances belong to the higher class (value\u202f2) while the rest are\u202f1. Categorical features such as\u202fV5\u202f(previous outcome) and\u202fV7\u202f(contact) have very skewed distributions (e.g.,\u202fV5\u202f=\u202fyes\u202fin only\u202f154\u202fout of\u202f10\u202f000 rows) and the few “yes” values line up with the minority class. Numeric features (e.g.,\u202fV6,\u202fV14) have large variances and some outliers, but they do not shift the overall class balance. Consequently, the best estimate for the overall expected target value is simply the empirical mean of the target column.\n\nPREDICTION: 1.121')
+2026-03-26 17:09:24,119 | INFO | LLM predictions: [1.121, 1.121, 1.121]
+2026-03-26 17:09:24,121 | INFO | LLM predictions: [1.121, 1.121, 1.121]
+2026-03-26 17:09:24,287 | INFO | LLMPrior initialized: λ_init=0.60 (trainable), llm_avg=1.1210, mean=[0.7459999918937683, 0.2540000081062317]
+2026-03-26 17:09:24,288 | INFO | Training for 5 epochs with lr=0.001...
+2026-03-26 17:10:02,910 | INFO | 
+2026-03-26 17:10:02,910 | INFO | ============================================================
+2026-03-26 17:10:02,910 | INFO | Training Log (per epoch)
+2026-03-26 17:10:02,912 | INFO | ============================================================
+2026-03-26 17:10:02,912 | INFO | Epoch    Train Loss      Valid Loss      accuracy       
+2026-03-26 17:10:02,912 | INFO | -----------------------------------------------------
+2026-03-26 17:10:02,912 | INFO | 0        1369.492676     308.333679      0.871000       
+2026-03-26 17:10:02,912 | INFO | 1        592.975952      343.693390      0.869500       
+2026-03-26 17:10:02,912 | INFO | 2        366.782715      291.561005      0.870000       
+2026-03-26 17:10:02,913 | INFO | 3        297.631927      284.452393      0.872000       
+2026-03-26 17:10:02,913 | INFO | 4        286.509491      262.773071      0.876500       
+2026-03-26 17:10:02,913 | INFO | 
+LLMPrior final λ (learned): 0.5947
+2026-03-26 17:10:02,913 | INFO | 
+2026-03-26 17:10:02,913 | INFO | ----------------------------------------
+2026-03-26 17:10:02,914 | INFO | Sample predictions (first 5 validation rows):
+2026-03-26 17:10:02,914 | INFO | ----------------------------------------
+2026-03-26 17:10:03,254 | INFO |   [1] Predicted: class 0 | Actual: 2
+2026-03-26 17:10:03,254 | INFO |   [2] Predicted: class 0 | Actual: 1
+2026-03-26 17:10:03,255 | INFO |   [3] Predicted: class 0 | Actual: 1
+2026-03-26 17:10:03,255 | INFO |   [4] Predicted: class 0 | Actual: 1
+2026-03-26 17:10:03,255 | INFO |   [5] Predicted: class 0 | Actual: 1
+2026-03-26 17:10:03,256 | INFO | 
+2026-03-26 17:10:03,256 | INFO | ----------------------------------------
+2026-03-26 17:10:03,256 | INFO | Feature Importance:
+2026-03-26 17:10:03,256 | INFO | ----------------------------------------
+2026-03-26 17:10:03,260 | INFO | 
+Variable  Importance
+      V6    0.952689
+     V12    0.952654
+     V10    0.952621
+     V15    0.952615
+     V13    0.952615
+      V1    0.952567
+     V14    0.952495
+      V2    0.756833
+     V11    0.755603
+      V8    0.755430
+      V9    0.754234
+      V5    0.753603
+      V4    0.752881
+     V16    0.752808
+      V7    0.752682
+      V3    0.751766
+2026-03-26 17:10:03,868 | INFO | Plot saved to feature_importance.png
+2026-03-26 17:10:03,869 | INFO | 
+2026-03-26 17:10:03,869 | INFO | ============================================================
+2026-03-26 17:10:03,869 | INFO | Done! Log saved to: logs\run_20260326_170902_ds1461_WeightedSumKernel_LLMPrior.log
+2026-03-26 17:10:03,869 | INFO | ============================================================

@@ -1,0 +1,66 @@
+2026-03-26 16:04:11,253 | INFO | ============================================================
+2026-03-26 16:04:11,253 | INFO | TabularGP | Problem: regression | Kernel: ProductOfSumsKernel | Prior: LLMPrior
+2026-03-26 16:04:11,253 | INFO | Config: epochs=5, lr=0.001, noise=0.01, nb_training_points=500
+2026-03-26 16:04:11,253 | INFO | Dataset ID: 41187 | n_samples: 5000
+2026-03-26 16:04:11,253 | INFO | Log file: logs\run_20260326_160411_ds41187_ProductOfSumsKernel_LLMPrior.log
+2026-03-26 16:04:11,253 | INFO | ============================================================
+2026-03-26 16:04:11,266 | INFO | Categorical features (4): ['month', 'weight', 'flag', 'station']
+2026-03-26 16:04:11,267 | INFO | Continuous features  (2): ['year', 'day']
+2026-03-26 16:04:11,267 | INFO | Dataset shape: (2225, 7)
+2026-03-26 16:04:14,118 | INFO | Querying LLMs with dataset summary...
+2026-03-26 16:04:14,131 | INFO | Querying 3 LLMs with dataset summary (2225 samples)...
+2026-03-26 16:04:14,146 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-26 16:04:16,883 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-26 16:04:16,895 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 340.142 (raw: 'The target variable\u202fco2\u202fis a continuous measurement of atmospheric CO₂ concentration. The dataset summary already provides the overall sample statistics, with the mean (average) value of\u202fco2\u202fbeing 340.142\u202fppm and a standard deviation of 17.004\u202fppm across the 2\u202f225 weekly observations. Since no additional information (e.g., a time‑trend model or covariate effects) is required for a simple expectation, the best unbiased estimate of the overall expected CO₂ concentration is the sample mean.\n\nPREDICTION: 340.142')
+2026-03-26 16:04:16,896 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-26 16:04:18,858 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-26 16:04:18,859 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 340.14 (raw: 'The Mauna Loa CO₂ record shows a clear upward trend over the decades, but when averaging across the whole 1958‑2001 period the variations around this trend balance out, yielding an overall mean close to the reported dataset average. Given the summary statistics, the best single‐point estimate for the expected CO₂ concentration is the overall mean of the target column.\n\nPREDICTION: 340.14')
+2026-03-26 16:04:18,860 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-26 16:04:20,814 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-26 16:04:20,814 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 340.14 (raw: 'The weekly CO₂ values show a clear seasonal pattern (higher in late spring/summer, lower in winter) and a long‑term upward trend from the late 1950s to 2001. However, when we ask for the **overall expected value** across the entire series, the most reliable estimate is the empirical mean of the target, which already incorporates both the seasonal oscillation and the secular increase.  \n\nThe summary statistics give a mean CO₂ concentration of **340.142\u202fppm** (standard deviation ≈\u202f17\u202fppm), so the best single‑value prediction for the overall expectation is this mean.\n\nPREDICTION: 340.14')
+2026-03-26 16:04:20,815 | INFO | LLM predictions: [340.142, 340.14, 340.14]
+2026-03-26 16:04:20,815 | INFO | LLM predictions: [340.142, 340.14, 340.14]
+2026-03-26 16:04:20,885 | INFO | LLMPrior initialized: λ_init=0.60 (trainable), llm_avg=340.1407, mean=[340.2933654785156]
+2026-03-26 16:04:20,886 | INFO | Training for 5 epochs with lr=0.001...
+2026-03-26 16:04:27,770 | INFO | 
+2026-03-26 16:04:27,771 | INFO | ============================================================
+2026-03-26 16:04:27,771 | INFO | Training Log (per epoch)
+2026-03-26 16:04:27,771 | INFO | ============================================================
+2026-03-26 16:04:27,772 | INFO | Epoch    Train Loss      Valid Loss      rmse           
+2026-03-26 16:04:27,772 | INFO | -----------------------------------------------------
+2026-03-26 16:04:27,772 | INFO | 0        2.927168        2.751882        3.722389       
+2026-03-26 16:04:27,773 | INFO | 1        3.479774        3.732586        9.308678       
+2026-03-26 16:04:27,773 | INFO | 2        3.613641        3.586815        8.482368       
+2026-03-26 16:04:27,774 | INFO | 3        3.613954        3.524015        8.067777       
+2026-03-26 16:04:27,774 | INFO | 4        3.606093        3.513865        7.998183       
+2026-03-26 16:04:27,774 | INFO | 
+LLMPrior final λ (learned): 0.5947
+2026-03-26 16:04:27,776 | INFO | 
+2026-03-26 16:04:27,776 | INFO | ----------------------------------------
+2026-03-26 16:04:27,776 | INFO | Sample predictions (first 5 validation rows):
+2026-03-26 16:04:27,777 | INFO | ----------------------------------------
+2026-03-26 16:04:27,884 | INFO |   [1] Predicted: 326.6853 | Actual: 322.1
+2026-03-26 16:04:27,885 | INFO |   [2] Predicted: 329.2679 | Actual: 322.2
+2026-03-26 16:04:27,885 | INFO |   [3] Predicted: 330.9069 | Actual: 320.9
+2026-03-26 16:04:27,887 | INFO |   [4] Predicted: 333.0174 | Actual: 329.0
+2026-03-26 16:04:27,887 | INFO |   [5] Predicted: 328.0833 | Actual: 315.8
+2026-03-26 16:04:27,888 | INFO | 
+2026-03-26 16:04:27,888 | INFO | ----------------------------------------
+2026-03-26 16:04:27,888 | INFO | Feature Importance:
+2026-03-26 16:04:27,889 | INFO | ----------------------------------------
+2026-03-26 16:04:27,897 | INFO | 
+Variable  Importance
+     day    0.116922
+ station    0.094595
+   month    0.061282
+    flag    0.052175
+  weight    0.051191
+    year    0.033795
+2026-03-26 16:04:28,518 | INFO | Plot saved to feature_importance.png
+2026-03-26 16:04:28,518 | INFO | 
+2026-03-26 16:04:28,519 | INFO | ============================================================
+2026-03-26 16:04:28,519 | INFO | Done! Log saved to: logs\run_20260326_160411_ds41187_ProductOfSumsKernel_LLMPrior.log
+2026-03-26 16:04:28,519 | INFO | ============================================================

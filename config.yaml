@@ -3,7 +3,7 @@
 # =============================================================================
 
 # Problem type: "regression" or "classification"
-problem: "regression"
+problem: "classification"
 
 # OpenML dataset ID (https://www.openml.org/search?type=data)
 # Examples:
@@ -13,7 +13,7 @@ problem: "regression"
 #   - 41021: boston housing (regression, 506 rows, 13 features) -- deprecated, use 43404
 #   - 43404: california housing (regression, 20640 rows, 8 features)
 #   - 41187: wine-quality (regression, 6497 rows, 12 features)
-dataset_id: 43404
+dataset_id: 1461
 
 # Target column name (set null to use OpenML's default target)
 target: null
@@ -22,21 +22,22 @@ target: null
 nb_training_points: 500
 
 # Number of data samples to use (set null to use all)
-n_samples: null
+n_samples: 10000
 
 # Training
 epochs: 5
 lr: 1.0e-3
 
-# Kernel: "ProductOfSumsKernel", "WeightedSumKernel", "WeightedProductKernel", "NeuralKernel"
+# Kernel: "ProductOfSumsKernel", "WeightedSumKernel", "WeightedProductKernel", "NeuralKernel", "LLMKernel"
 kernel: "WeightedSumKernel"
 
 # Prior: "ConstantPrior", "ZeroPrior", "LinearPrior", "LLMPrior"
-prior: "LinearPrior"
+prior: "ConstantPrior"
 
 # LLM Prior settings (only used when prior is "LLMPrior")
 llm_prior:
-  lambda: 0.5                    # Trust weight for LLM outputs vs. data mean
+  lambda: 0.6                  # Trust weight for LLM outputs vs. data mean
+  trainable_lambda: true          # If false, λ is fixed (not updated by gradient descent)
   dataset_description: ""        # Optional description of dataset for LLM prompts
   models:
     - model: "nvidia_nim/openai/gpt-oss-120b"
@@ -45,6 +46,12 @@ llm_prior:
       strategy: "domain_expert"
     - model: "nvidia_nim/openai/gpt-oss-120b"
       strategy: "pattern_matching"
+
+# LLM Kernel settings (only used when kernel is "LLMKernel")
+llm_kernel:
+  base_kernel: "WeightedSumKernel"   # Traditional kernel to combine with LLM kernel
+  lambda: 0.7                        # Weight for traditional kernel (1-λ for LLM kernel)
+  trainable_lambda: false             # If false, λ is fixed
 
 # Noise (fraction of output std)
 noise: 0.01

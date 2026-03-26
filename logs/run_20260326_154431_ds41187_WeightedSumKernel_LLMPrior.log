@@ -1,0 +1,66 @@
+2026-03-26 15:44:31,058 | INFO | ============================================================
+2026-03-26 15:44:31,058 | INFO | TabularGP | Problem: regression | Kernel: WeightedSumKernel | Prior: LLMPrior
+2026-03-26 15:44:31,060 | INFO | Config: epochs=5, lr=0.001, noise=0.01, nb_training_points=500
+2026-03-26 15:44:31,060 | INFO | Dataset ID: 41187 | n_samples: 5000
+2026-03-26 15:44:31,060 | INFO | Log file: logs\run_20260326_154431_ds41187_WeightedSumKernel_LLMPrior.log
+2026-03-26 15:44:31,060 | INFO | ============================================================
+2026-03-26 15:44:31,070 | INFO | Categorical features (4): ['month', 'weight', 'flag', 'station']
+2026-03-26 15:44:31,071 | INFO | Continuous features  (2): ['year', 'day']
+2026-03-26 15:44:31,071 | INFO | Dataset shape: (2225, 7)
+2026-03-26 15:44:33,481 | INFO | Querying LLMs with dataset summary...
+2026-03-26 15:44:33,491 | INFO | Querying 3 LLMs with dataset summary (2225 samples)...
+2026-03-26 15:44:33,503 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-26 15:44:35,177 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-26 15:44:35,188 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 340.14 (raw: 'The dataset summary provides the overall sample mean of the target variable\u202fco2, which is the unbiased estimator of the expected value for a random observation drawn from this population. Although the data span several decades and exhibit a rising trend, without additional information about the specific time point or conditions for the prediction, the most appropriate single‑point estimate is the overall mean. Hence the best guess for the expected CO₂ concentration is the reported mean of 340.142\u202fppm.\n\nPREDICTION: 340.14')
+2026-03-26 15:44:35,189 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-26 15:44:36,588 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-26 15:44:36,589 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 340.14 (raw: 'PREDICTION: 340.14')
+2026-03-26 15:44:36,591 | INFO | 
+LiteLLM completion() model= openai/gpt-oss-120b; provider = nvidia_nim
+2026-03-26 15:44:38,430 | INFO | Wrapper: Completed Call, calling success_handler
+2026-03-26 15:44:38,432 | INFO | LLM nvidia_nim/openai/gpt-oss-120b returned: 340.14 (raw: 'The data show a clear upward trend of CO₂ over the years (from ~316\u202fppm in 1958 to ~374\u202fppm by 2001) and a seasonal cycle where concentrations are higher in the spring months and lower in the fall. Because the dataset spans the full range of years and seasons, the best single‑value estimate for a new observation drawn from the same distribution is the overall mean of the target, which already incorporates both the long‑term increase and seasonal variation.\n\n**PREDICTION: 340.14**')
+2026-03-26 15:44:38,433 | INFO | LLM predictions: [340.14, 340.14, 340.14]
+2026-03-26 15:44:38,434 | INFO | LLM predictions: [340.14, 340.14, 340.14]
+2026-03-26 15:44:38,512 | INFO | LLMPrior initialized: λ_init=0.90 (fixed), llm_avg=340.1400, mean=[340.2933654785156]
+2026-03-26 15:44:38,513 | INFO | Training for 5 epochs with lr=0.001...
+2026-03-26 15:44:42,559 | INFO | 
+2026-03-26 15:44:42,559 | INFO | ============================================================
+2026-03-26 15:44:42,559 | INFO | Training Log (per epoch)
+2026-03-26 15:44:42,559 | INFO | ============================================================
+2026-03-26 15:44:42,559 | INFO | Epoch    Train Loss      Valid Loss      rmse           
+2026-03-26 15:44:42,559 | INFO | -----------------------------------------------------
+2026-03-26 15:44:42,560 | INFO | 0        2.003657        2.194702        0.614983       
+2026-03-26 15:44:42,560 | INFO | 1        1.924690        2.184443        0.628340       
+2026-03-26 15:44:42,560 | INFO | 2        1.808906        2.029246        0.636329       
+2026-03-26 15:44:42,560 | INFO | 3        1.693551        1.729385        0.626944       
+2026-03-26 15:44:42,560 | INFO | 4        1.614562        1.521567        0.630821       
+2026-03-26 15:44:42,561 | INFO | 
+LLMPrior final λ (learned): 0.9000
+2026-03-26 15:44:42,561 | INFO | 
+2026-03-26 15:44:42,561 | INFO | ----------------------------------------
+2026-03-26 15:44:42,561 | INFO | Sample predictions (first 5 validation rows):
+2026-03-26 15:44:42,561 | INFO | ----------------------------------------
+2026-03-26 15:44:42,616 | INFO |   [1] Predicted: 322.1166 | Actual: 322.1
+2026-03-26 15:44:42,617 | INFO |   [2] Predicted: 321.4864 | Actual: 322.2
+2026-03-26 15:44:42,617 | INFO |   [3] Predicted: 320.0506 | Actual: 320.9
+2026-03-26 15:44:42,617 | INFO |   [4] Predicted: 328.7262 | Actual: 329.0
+2026-03-26 15:44:42,618 | INFO |   [5] Predicted: 316.3750 | Actual: 315.8
+2026-03-26 15:44:42,618 | INFO | 
+2026-03-26 15:44:42,618 | INFO | ----------------------------------------
+2026-03-26 15:44:42,619 | INFO | Feature Importance:
+2026-03-26 15:44:42,619 | INFO | ----------------------------------------
+2026-03-26 15:44:42,622 | INFO | 
+Variable  Importance
+    year    1.166001
+     day    1.166001
+   month    1.133932
+  weight    1.112187
+ station    1.055046
+    flag    1.054947
+2026-03-26 15:44:43,023 | INFO | Plot saved to feature_importance.png
+2026-03-26 15:44:43,023 | INFO | 
+2026-03-26 15:44:43,023 | INFO | ============================================================
+2026-03-26 15:44:43,023 | INFO | Done! Log saved to: logs\run_20260326_154431_ds41187_WeightedSumKernel_LLMPrior.log
+2026-03-26 15:44:43,023 | INFO | ============================================================

@@ -1,0 +1,6 @@
+2026-03-26 15:13:26,465 | INFO | ============================================================
+2026-03-26 15:13:26,465 | INFO | TabularGP | Problem: regression | Kernel: WeightedSumKernel | Prior: LLMPrior
+2026-03-26 15:13:26,465 | INFO | Config: epochs=5, lr=0.001, noise=0.01, nb_training_points=500
+2026-03-26 15:13:26,466 | INFO | Dataset ID: 43404 | n_samples: 5000
+2026-03-26 15:13:26,466 | INFO | Log file: logs\run_20260326_151326_ds43404_WeightedSumKernel_LLMPrior.log
+2026-03-26 15:13:26,466 | INFO | ============================================================

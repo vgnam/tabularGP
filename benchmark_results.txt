@@ -1,0 +1,31 @@
+============================================================
+  TabularGP vs Random Forest (Noisy Datasets)
+  GP models noise explicitly -> avoids overfitting
+============================================================
+
+============================================================
+  Synthetic NOISY (n=200, noise_std=1.5)
+  Samples: 200 | Cat: 0, Cont: 4
+  Running 3 splits...
+============================================================
+█  [Run 1] GP=1.7716  RF=1.8975
+█  [Run 2] GP=2.2362  RF=1.8330
+█  [Run 3] GP=2.1402  RF=1.6969
+
+  GP avg:  2.0494 ± 0.2003
+  RF avg:  1.8091 ± 0.0836
+  Winner: RF (13.3%)
+  Servo dataset: (0, 20), target='Utility'
+
+============================================================
+  Servo (OpenML #188, n=167)
+  Samples: 0 | Cat: 19, Cont: 0
+  Running 3 splits...
+============================================================
+Servo failed: Found array with 0 sample(s) (shape=(0, 19)) while a minimum of 1 is required by RandomForestRegressor.
+
+============================================================
+  SUMMARY
+============================================================
+                               dataset  gp_rmse  rf_rmse winner
+Synthetic NOISY (n=200, noise_std=1.5) 2.049352 1.809125     RF
